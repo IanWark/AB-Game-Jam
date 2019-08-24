@@ -50,7 +50,6 @@ public class PlayerController : MonoBehaviour
         {
             // Move left/right
             // Collider will stop from moving offscreen to the left
-            
             rb2d.MovePosition(rb2d.position + new Vector2(Input.GetAxisRaw("Horizontal") * currentSpeed * Time.deltaTime, 0));
 
             // Stomp
@@ -76,6 +75,7 @@ public class PlayerController : MonoBehaviour
     {
         if (numMeleeEnemiesTouching > 0)
         {
+            // If enemies are touching us, take damage every so often
             meleeDamageTimer += Time.fixedDeltaTime;
             if (meleeDamageTimer > meleeAttackSpeed)
             {
@@ -123,7 +123,6 @@ public class PlayerController : MonoBehaviour
 
     public void AddMeleeEnemy()
     {
-        // TODO start taking damage
         numMeleeEnemiesTouching += 1;
         UpdateSpeed();
     }
