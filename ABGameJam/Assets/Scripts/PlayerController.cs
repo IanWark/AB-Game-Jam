@@ -67,9 +67,7 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Space) && currentDash == maxDash)
             {
                 Attack(dashCollider, dashDamage);
-                rb2d.MovePosition(rb2d.position + new Vector2(10 * currentSpeed * Time.deltaTime, 0));
-                //currentDash = 0;
-                //dashSlider.value = currentDash;
+                Dash();
             }
         }
     }
@@ -114,6 +112,13 @@ public class PlayerController : MonoBehaviour
                 enemy.OnHit(damage);
             }
         }
+    }
+    
+    public void Dash()
+    {
+        rb2d.MovePosition(rb2d.position + new Vector2(10 * currentSpeed * Time.deltaTime, 0));
+        currentDash = 0;
+        dashSlider.value = currentDash;
     }
 
     public void AddMeleeEnemy()
