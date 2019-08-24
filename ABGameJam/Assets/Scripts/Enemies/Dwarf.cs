@@ -27,6 +27,9 @@ public class Dwarf : MonoBehaviour
         rb2D.constraints = 0;
         // Launch dwarf
         rb2D.AddForce(force);
+
+        // Start a timer to destroy object
+        Destroy(gameObject, 5);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,4 +39,6 @@ public class Dwarf : MonoBehaviour
         // TODO need to detect when to despawn
         Die(new Vector2(0, 200));
     }
+
+
 }
