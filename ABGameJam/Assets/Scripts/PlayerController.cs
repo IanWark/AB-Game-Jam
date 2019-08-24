@@ -8,10 +8,9 @@ public class PlayerController : MonoBehaviour
 
     public bool controlEnabled = true;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        Globals.player = this;
     }
 
     // Update is called once per frame
