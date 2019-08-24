@@ -1195,8 +1195,18 @@ MonoBehaviour:
   spawnDistanceMin: 5
   spawnDistanceMax: 8
   newSpawnSize: 5
+  dwarfCivilian: {fileID: 6595888934365512199, guid: 4ce5d631e0983c64786038c6afbe7eb3,
+    type: 3}
+  dwarfCivilianChance: 0.5
+  dwarfCivilianNum: 2
   dwarfMelee: {fileID: 2917799986967892130, guid: 44f44dc829024314c87896dfd3582cf1,
     type: 3}
+  dwarfMeleeChance: 0.5
+  dwarfMeleeNum: 1
+  dwarfRanged: {fileID: 2467114234805813859, guid: 6c37483ed6d3821489b33036ee807084,
+    type: 3}
+  dwarfRangedChance: 0
+  dwarfRangedNum: 0
 --- !u!4 &2080134020
 Transform:
   m_ObjectHideFlags: 0
