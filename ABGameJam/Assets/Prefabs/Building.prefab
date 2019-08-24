@@ -120,4 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a15f466f8c0487b43a1073b2dc14c0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionRange: 4
   spawnHeight: -0.65
+  extraHeightForArrow: 0.5
+  arrow: {fileID: 6875106327061668347, guid: 5c2f98ac74aa47b41b8a05b2db0fa607, type: 3}
+  attackSpeed: 3

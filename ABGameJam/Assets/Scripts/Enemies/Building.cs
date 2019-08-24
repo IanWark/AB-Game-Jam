@@ -5,16 +5,16 @@ using UnityEngine;
 public class Building : Enemy
 {
     public float spawnHeight = -0.65f;
+    public float extraHeightForArrow = 0.5f;
 
+    public Arrow arrow;
     public float attackSpeed = 3;
     private float attackTimer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-
-
+        detectionRange = 10;
     }
 
     void FixedUpdate()
@@ -23,6 +23,19 @@ public class Building : Enemy
         {
             attackTimer += Time.fixedDeltaTime;
             
+            if (attackTimer > attackSpeed)
+            {
+                Vector2 ourPos = new Vector2(transform.position.x, transform.position.y + extraHeightForArrow);
+                Vector2 theirPos = new Vector2(Globals.player.transform.position.x, Globals.player.transform.position.y);
+
+                Vector2 arrowDirection = theirPos - ourPos;
+                arrowDirection.Normalize();
+
+                Arrow newArrow = Instantiate(arrow, ourPos, Quaternion.identity);
+                newArrow.Direction = arrowDirection;
+
+                attackTimer = 0;
+            } 
         }
     }
 
