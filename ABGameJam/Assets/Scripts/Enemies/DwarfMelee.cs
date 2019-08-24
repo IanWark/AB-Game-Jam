@@ -6,7 +6,7 @@ public class DwarfMelee : Dwarf
 {
     public float closeEnoughDistance = 0.5f;
     static public float slowPlayerPercentage = 0.5f;
-    static public int attackDamage = 1;
+    static public int attackDamage = 5;
     static public float attackSpeed = 1;
 
     // Start is called before the first frame update
