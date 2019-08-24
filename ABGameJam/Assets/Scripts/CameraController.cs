@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
 
         if (controlEnabled)
         {
-            // Independant camera movement
+            // Independant camera movement (for testing only)
             bool right = Input.GetKey(KeyCode.L);
             bool left = Input.GetKey(KeyCode.J);
 

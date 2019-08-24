@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DwarfMelee : MonoBehaviour
+public class DwarfMelee : Dwarf
 {
     public float spawnHeight = -1.05f;
 
