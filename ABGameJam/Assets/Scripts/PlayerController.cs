@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public int maxHealth = 1000;
+    public Slider healthSlider;
     
     public float speed = 5;
 
@@ -34,6 +36,6 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= damage;
 
-        //healthSlider.value = currentHealth;
+        healthSlider.value = currentHealth;
     }
 }
