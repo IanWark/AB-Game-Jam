@@ -16,5 +16,5 @@ public abstract class Enemy : MonoBehaviour
         
     }
 
-    public abstract void TakeDamage(int damage);
+    public abstract void OnHit(int damage);
 }
