@@ -35,7 +35,11 @@ public class PlayerController : MonoBehaviour
     public void OnHit(int damage)
     {
         currentHealth -= damage;
-
         healthSlider.value = currentHealth;
+        
+        if (currentHealth <= 0)
+        {
+            // Die
+        }
     }
 }
