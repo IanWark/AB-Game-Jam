@@ -8,9 +8,12 @@ public class PlayerController : MonoBehaviour
 
     public bool controlEnabled = true;
 
+    private Rigidbody2D rb2d;
+
     void Awake()
     {
         Globals.player = this;
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -18,10 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         if (controlEnabled)
         {
-            // This may be useful if we want to make the movement better: https://roystan.net/articles/character-controller-2d.html
-
-            // Simple x-axis only movement
-            transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0, 0));
+            rb2d.MovePosition(rb2d.position + new Vector2(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0));
         }
     }
 }
