@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour
 {
     public int maxHealth = 1000;
     public Slider healthSlider;
+    private int currentHealth;
+    
+    public int maxDash = 1000;
+    public Slider dashSlider;
+    private int currentDash;
     
     public const float speed = 3;
     // Current speed changes whenever the number of melee enemies touching us changes
@@ -21,20 +26,21 @@ public class PlayerController : MonoBehaviour
     private int meleeAttackDamage = DwarfMelee.attackDamage;
 
     public bool controlEnabled = true;
-    
-    private int currentHealth;
 
     private Rigidbody2D rb2d;
     public BoxCollider2D stompCollider;
     public int stompDamage = 2;
     public BoxCollider2D punchCollider;
     public int punchDamage = 3;
+    public BoxCollider2D dashCollider;
+    public int dashDamage = 5;
 
     void Awake()
     {
         Globals.player = this;
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
+        currentDash = maxDash;
     }
 
     // Update is called once per frame
@@ -52,9 +58,16 @@ public class PlayerController : MonoBehaviour
             {
                 Attack(stompCollider, stompDamage);
             }
+            // Punch
             else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.K))
             {
                 Attack(punchCollider, punchDamage);
+            }
+            // Dash
+            else if (Input.GetKeyDown(KeyCode.Space) && currentDash == maxDash)
+            {
+                Attack(dashCollider, dashDamage);
+                Dash();
             }
         }
     }
@@ -83,7 +96,7 @@ public class PlayerController : MonoBehaviour
         
         if (currentHealth <= 0)
         {
-            // Die
+            // Die, show score on game over screen
         }
     }
 
@@ -99,6 +112,13 @@ public class PlayerController : MonoBehaviour
                 enemy.OnHit(damage);
             }
         }
+    }
+    
+    public void Dash()
+    {
+        rb2d.MovePosition(rb2d.position + new Vector2(10 * currentSpeed * Time.deltaTime, 0));
+        currentDash = 0;
+        dashSlider.value = currentDash;
     }
 
     public void AddMeleeEnemy()
