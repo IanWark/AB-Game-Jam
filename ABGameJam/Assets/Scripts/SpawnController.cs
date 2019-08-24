@@ -5,7 +5,8 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     // Can spawn a new thing every newSpawnSize units
-    public float spawnDistanceFromCamera = 5;
+    public float spawnDistanceMin = 5;
+    public float spawnDistanceMax = 8;
     public float newSpawnSize = 5;
     private float lastXPositionSpawned = 0;
 
@@ -18,7 +19,7 @@ public class SpawnController : MonoBehaviour
 
         if (cameraX >= lastXPositionSpawned + newSpawnSize)
         {
-            Instantiate(dwarfMelee, new Vector2(cameraX + spawnDistanceFromCamera, dwarfMelee.spawnHeight), gameObject.transform.rotation);
+            Instantiate(dwarfMelee, new Vector2(cameraX + Random.Range(spawnDistanceMin, spawnDistanceMax), dwarfMelee.spawnHeight), gameObject.transform.rotation);
 
 
 

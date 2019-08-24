@@ -13,13 +13,13 @@ TagManager:
   - UI
   - 
   - 
+  - Player
+  - Enemies
+  - Missiles
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - LeftCollider
+  - BottomCollider
   - 
   - 
   - 
