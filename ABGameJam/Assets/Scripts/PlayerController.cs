@@ -9,6 +9,16 @@ public class PlayerController : MonoBehaviour
     public Slider healthSlider;
     
     public float speed = 5;
+    // Current speed changes whenever the number of melee enemies touching us changes
+    private float currentSpeed = 5;
+    public float getCurrentSpeed() { return currentSpeed; }
+
+    // The number of melee enemies touching us, slowing us down and dealing us damage
+    private int numMeleeEnemiesTouching = 0;
+    private float meleeDamageTimer = 0;
+    private float meleeSlowPlayerPercentage = DwarfMelee.slowPlayerPercentage;
+    private float meleeAttackSpeed = DwarfMelee.attackSpeed;
+    private int meleeAttackDamage = DwarfMelee.attackDamage;
 
     public bool controlEnabled = true;
     
@@ -34,7 +44,8 @@ public class PlayerController : MonoBehaviour
         {
             // Move left/right
             // Collider will stop from moving offscreen to the left
-            rb2d.MovePosition(rb2d.position + new Vector2(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0));
+            
+            rb2d.MovePosition(rb2d.position + new Vector2(Input.GetAxisRaw("Horizontal") * currentSpeed * Time.deltaTime, 0));
 
             // Stomp
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J))
@@ -47,7 +58,24 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+
+    private void FixedUpdate()
+    {
+        if (numMeleeEnemiesTouching > 0)
+        {
+            meleeDamageTimer += Time.fixedDeltaTime;
+            if (meleeDamageTimer > meleeAttackSpeed)
+            {
+                OnHit(numMeleeEnemiesTouching * meleeAttackDamage);   
+                meleeDamageTimer = 0;
+            }
+        }
+        else
+        {
+            meleeDamageTimer = 0;
+        }
+    }
+
     public void OnHit(int damage)
     {
         currentHealth -= damage;
@@ -71,6 +99,24 @@ public class PlayerController : MonoBehaviour
                 enemy.OnHit(damage);
             }
         }
+    }
+
+    public void AddMeleeEnemy()
+    {
+        // TODO start taking damage
+        numMeleeEnemiesTouching += 1;
+        UpdateSpeed();
+    }
+
+    public void RemoveMeleeEnemy()
+    {
+        numMeleeEnemiesTouching -= 1;
+        UpdateSpeed();
+    }
+
+    public void UpdateSpeed()
+    {
+        currentSpeed = speed * (Mathf.Pow(meleeSlowPlayerPercentage, numMeleeEnemiesTouching));
     }
 
     public Collider2D[] GetAllCollidersHit(BoxCollider2D ourCollider)

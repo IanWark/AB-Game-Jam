@@ -5,12 +5,14 @@ using UnityEngine;
 public abstract class Dwarf : Enemy
 {
     Rigidbody2D rb2D;
+    Collider2D col;
 
     public bool active = true;
 
     void Awake()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -29,6 +31,7 @@ public abstract class Dwarf : Enemy
     {
         // Stop AI
         active = false;
+        col.enabled = false;
         // Start gravity
         rb2D.constraints = 0;
         // Launch dwarf
