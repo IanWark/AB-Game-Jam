@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float speed = 5;
-
-    public bool controlEnabled = true;
+    public bool controlEnabled = false;
+    public float controlSpeed = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +24,16 @@ public class CameraController : MonoBehaviour
             int direction = (right ? 1 : 0) - (left ? 1 : 0);
 
             // Simple x-axis only movement
-            transform.Translate(new Vector3(direction * speed * Time.deltaTime, 0, 0));
+            transform.Translate(new Vector3(direction * controlSpeed * Time.deltaTime, 0, 0));
+        } else
+        {
+            // If player is infront of camera, follow
+            // Otherwise, don't move
+            float playerX = Globals.player.transform.position.x;
+            if (playerX - transform.position.x > 0)
+            {
+                transform.position = new Vector3(playerX, transform.position.y, transform.position.z);
+            }
         }
     }
 }
