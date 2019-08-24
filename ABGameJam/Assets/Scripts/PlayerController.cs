@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour
     public int maxHealth = 1000;
     public Slider healthSlider;
     
-    public float speed = 5;
+    public const float speed = 3;
     // Current speed changes whenever the number of melee enemies touching us changes
-    private float currentSpeed = 5;
+    private float currentSpeed = speed;
     public float getCurrentSpeed() { return currentSpeed; }
 
     // The number of melee enemies touching us, slowing us down and dealing us damage
