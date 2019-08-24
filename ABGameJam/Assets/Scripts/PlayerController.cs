@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             // Dash
             else if (Input.GetKeyDown(KeyCode.Space) && currentDash == maxDash)
             {
-                //Attack(dashCollider, dashDamage);
+                Attack(dashCollider, dashDamage);
                 rb2d.MovePosition(rb2d.position + new Vector2(10 * currentSpeed * Time.deltaTime, 0));
                 //currentDash = 0;
                 //dashSlider.value = currentDash;
