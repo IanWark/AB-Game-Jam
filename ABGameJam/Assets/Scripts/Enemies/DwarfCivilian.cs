@@ -15,17 +15,10 @@ public class DwarfCivilian : Dwarf
     {
         if (active)
         {
-            if (detectedPlayer)
+            if (GetDetectedPlayer())
             {
                 // RUN AWAY!
                 rb2d.MovePosition(rb2d.position + new Vector2(moveSpeed * Time.deltaTime, 0));
-            } else
-            {
-                float playerDistance = Globals.player.transform.position.x - transform.position.x;
-                if (Mathf.Abs(playerDistance) <= detectionRange)
-                {
-                    detectedPlayer = true;
-                }
             }
         }
     }
