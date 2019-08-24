@@ -12,9 +12,10 @@ public class PlayerController : MonoBehaviour
     
     private int currentHealth;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        Globals.player = this;
+        
         // Set health to maximum
         currentHealth = maxHealth;
     }

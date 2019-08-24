@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Globals.mainCamera = this;
     }
 
     // Update is called once per frame
