@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dwarf : MonoBehaviour
+public abstract class Dwarf : Enemy
 {
     Rigidbody2D rb2D;
 
@@ -17,6 +17,12 @@ public class Dwarf : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        // TODO need to send a better force reacting to attack
+        Die(new Vector2(0, 200));
     }
 
     void Die(Vector2 force)
@@ -34,11 +40,6 @@ public class Dwarf : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // TODO need to detect it is the player hitting us with a valid attack
-        // TODO need to send a better force reacting to attack
-        // TODO need to detect when to despawn
-        Die(new Vector2(0, 200));
+        
     }
-
-
 }

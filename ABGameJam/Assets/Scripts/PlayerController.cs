@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private int currentHealth;
 
     private Rigidbody2D rb2d;
+    public BoxCollider2D stompCollider;
+    public int stompDamage = 2;
+    public BoxCollider2D punchCollider;
+    public int punchDamage = 3;
 
     void Awake()
     {
@@ -28,7 +32,19 @@ public class PlayerController : MonoBehaviour
     {
         if (controlEnabled)
         {
+            // Move left/right
+            // Collider will stop from moving offscreen to the left
             rb2d.MovePosition(rb2d.position + new Vector2(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0));
+
+            // Stomp
+            if (Input.GetMouseButtonDown(0))
+            {
+                Attack(stompCollider, stompDamage);
+            }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                Attack(punchCollider, punchDamage);
+            }
         }
     }
     
@@ -41,5 +57,24 @@ public class PlayerController : MonoBehaviour
         {
             // Die
         }
+    }
+
+    public void Attack(BoxCollider2D collider, int damage)
+    {
+        Collider2D[] hits = GetAllCollidersHit(collider);
+
+        foreach (var target in hits)
+        {
+            Enemy enemy = target.gameObject.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+        }
+    }
+
+    public Collider2D[] GetAllCollidersHit(BoxCollider2D ourCollider)
+    {
+        return Physics2D.OverlapBoxAll(ourCollider.transform.position, ourCollider.size, 0);
     }
 }
