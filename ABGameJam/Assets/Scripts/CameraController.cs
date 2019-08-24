@@ -16,8 +16,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (controlEnabled)
         {
+            // Independant camera movement
             bool right = Input.GetKey(KeyCode.L);
             bool left = Input.GetKey(KeyCode.J);
 
@@ -29,7 +31,7 @@ public class CameraController : MonoBehaviour
         {
             // If player is infront of camera, follow
             // Otherwise, don't move
-            float playerX = Globals.player.transform.position.x;
+            float playerX = Globals.player.transform.position.x + 1; // Add in more to give extra space to the right
             if (playerX - transform.position.x > 0)
             {
                 transform.position = new Vector3(playerX, transform.position.y, transform.position.z);
