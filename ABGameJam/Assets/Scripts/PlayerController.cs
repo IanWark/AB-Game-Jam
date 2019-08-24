@@ -46,6 +46,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Replenish dash
+        if (currentDash < maxDash)
+        {
+            currentDash += 5;
+            dashSlider.value = currentDash;
+        }
+        
+        // If a button is being pressed
         if (controlEnabled)
         {
             // Move left/right

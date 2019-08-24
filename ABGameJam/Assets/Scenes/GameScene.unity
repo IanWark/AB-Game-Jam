@@ -1977,6 +1977,11 @@ PrefabInstance:
       propertyPath: dashCollider
       value: 
       objectReference: {fileID: 8931873430857721055}
+    - target: {fileID: 5904718012436838769, guid: 5578fb40b43999a46b5902d625fc2098,
+        type: 3}
+      propertyPath: dashSlider
+      value: 
+      objectReference: {fileID: 1332936381}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5578fb40b43999a46b5902d625fc2098, type: 3}
 --- !u!61 &8931873430857721055 stripped
