@@ -1,17 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public int maxHealth = 1000;
+    public Slider healthSlider;
+    
     public float speed = 5;
 
     public bool controlEnabled = true;
+    
+    private int currentHealth;
 
-    // Start is called before the first frame update
-    void Start()
+    private Rigidbody2D rb2d;
+
+    void Awake()
     {
-        
+        Globals.player = this;
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -19,10 +28,18 @@ public class PlayerController : MonoBehaviour
     {
         if (controlEnabled)
         {
-            // This may be useful if we want to make the movement better: https://roystan.net/articles/character-controller-2d.html
-
-            // Simple x-axis only movement
-            transform.Translate(new Vector3(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0, 0));
+            rb2d.MovePosition(rb2d.position + new Vector2(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0));
+        }
+    }
+    
+    public void OnHit(int damage)
+    {
+        currentHealth -= damage;
+        healthSlider.value = currentHealth;
+        
+        if (currentHealth <= 0)
+        {
+            // Die
         }
     }
 }
