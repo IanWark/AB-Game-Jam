@@ -37,11 +37,11 @@ public class PlayerController : MonoBehaviour
             rb2d.MovePosition(rb2d.position + new Vector2(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0));
 
             // Stomp
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J))
             {
                 Attack(stompCollider, stompDamage);
             }
-            else if (Input.GetMouseButtonDown(1))
+            else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.K))
             {
                 Attack(punchCollider, punchDamage);
             }
