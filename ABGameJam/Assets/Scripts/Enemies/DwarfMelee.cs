@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DwarfMelee : Dwarf
 {
-    public float spawnHeight = -1.05f;
-    public float detectionRange = 4;
     public float closeEnoughDistance = 0.5f;
     static public float slowPlayerPercentage = 0.5f;
     static public int attackDamage = 1;
@@ -23,10 +21,18 @@ public class DwarfMelee : Dwarf
         if (active)
         {
             float playerDistance = Globals.player.transform.position.x - transform.position.x;
-            if (Mathf.Abs(playerDistance) <= detectionRange && Mathf.Abs(playerDistance) >= closeEnoughDistance)
+
+            if (detectedPlayer && Mathf.Abs(playerDistance) >= closeEnoughDistance)
             {
                 float xSpeed = (playerDistance > 0 ? 1 : -1) * moveSpeed;
                 rb2d.MovePosition(rb2d.position + new Vector2(xSpeed * Time.deltaTime, 0));
+            }
+            else
+            {
+                if (Mathf.Abs(playerDistance) <= detectionRange && Mathf.Abs(playerDistance) >= closeEnoughDistance)
+                {
+                    detectedPlayer = true;
+                }
             }
         }
     }

@@ -4,12 +4,18 @@ using UnityEngine;
 
 public abstract class Dwarf : Enemy
 {
+    public float detectionRange = 4;
+    protected bool detectedPlayer = false;
+
+    public float spawnHeight = -1.05f;
     public float moveSpeed = 1;
 
     protected Rigidbody2D rb2d;
     protected Collider2D col;
 
     public bool active = true;
+
+    // TODO clean up Dwarves who end up too far ahead or behind the camera (using colliders?)
 
     void Awake()
     {
