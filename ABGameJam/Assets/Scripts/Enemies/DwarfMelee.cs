@@ -22,17 +22,10 @@ public class DwarfMelee : Dwarf
         {
             float playerDistance = Globals.player.transform.position.x - transform.position.x;
 
-            if (detectedPlayer && Mathf.Abs(playerDistance) >= closeEnoughDistance)
+            if (GetDetectedPlayer() && Mathf.Abs(playerDistance) >= closeEnoughDistance)
             {
                 float xSpeed = (playerDistance > 0 ? 1 : -1) * moveSpeed;
                 rb2d.MovePosition(rb2d.position + new Vector2(xSpeed * Time.deltaTime, 0));
-            }
-            else
-            {
-                if (Mathf.Abs(playerDistance) <= detectionRange && Mathf.Abs(playerDistance) >= closeEnoughDistance)
-                {
-                    detectedPlayer = true;
-                }
             }
         }
     }

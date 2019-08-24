@@ -4,16 +4,22 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float detectionRange = 4;
+    private bool detectedPlayer = false;
 
-    // Update is called once per frame
-    void Update()
+    protected bool GetDetectedPlayer()
     {
-        
+        if (!detectedPlayer)
+        {
+            // Check if we can detect
+            float playerDistance = Globals.player.transform.position.x - transform.position.x;
+            if (Mathf.Abs(playerDistance) <= detectionRange)
+            {
+                detectedPlayer = true;
+            }
+        }
+
+        return detectedPlayer;       
     }
 
     public abstract void OnHit(int damage);
