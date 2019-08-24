@@ -1,45 +1,45 @@
 # =============== #
 # Unity generated #
 # =============== #
-[Tt]emp/
-[Oo]bj/
-[Bb]uild
-/[Bb]uilds/
-/[Ll]ibrary/
-sysinfo.txt
-*.stackdump
-/Assets/AssetStoreTools*
-*.apk
-*.unitypackage
+ABJamGame/[Tt]emp/
+ABJamGame/[Oo]bj/
+ABJamGame/[Bb]uild
+ABJamGame/[Bb]uilds/
+ABJamGame/[Ll]ibrary/
+ABJamGame/sysinfo.txt
+ABJamGame/*.stackdump
+ABJamGame/Assets/AssetStoreTools*
+ABJamGame/*.apk
+ABJamGame/*.unitypackage
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
-[Ee]xported[Oo]bj/
-.vs/
-/*.userprefs
-/*.csproj
-/*.pidb
-*.pidb.meta
-/*.suo
-/*.sln*
-/*.user
-/*.unityproj
-/*.booproj
-.consulo/
-/*.tmp
-/*.svd
+ABJamGame/[Ee]xported[Oo]bj/
+ABJamGame/.vs/
+ABJamGame/*.userprefs
+ABJamGame/*.csproj
+ABJamGame/*.pidb
+ABJamGame/*.pidb.meta
+ABJamGame/*.suo
+ABJamGame/*.sln*
+ABJamGame/*.user
+ABJamGame/*.unityproj
+ABJamGame/*.booproj
+ABJamGame/.consulo/
+ABJamGame/*.tmp
+ABJamGame/*.svd
  
 # ============ #
 # OS generated #
 # ============ #
-.DS_Store*
-._*
-.Spotlight-V100
-.Trashes
-Icon?
-ehthumbs.db
-[Tt]humbs.db
-[Dd]esktop.ini
-Corridor/Library/ShaderCache/
-Corridor/Library/metadata/
+ABJamGame/.DS_Store*
+ABJamGame/._*
+ABJamGame/.Spotlight-V100
+ABJamGame/.Trashes
+ABJamGame/Icon?
+ABJamGame/ehthumbs.db
+ABJamGame/[Tt]humbs.db
+ABJamGame/[Dd]esktop.ini
+ABJamGame/Corridor/Library/ShaderCache/
+ABJamGame/Corridor/Library/metadata/
