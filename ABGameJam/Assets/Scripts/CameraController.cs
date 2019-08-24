@@ -6,11 +6,14 @@ public class CameraController : MonoBehaviour
 {
     public bool controlEnabled = false;
     public float controlSpeed = 5;
+    public FreeParallax parallax;
+    float parallaxSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         Globals.mainCamera = this;
+        parallaxSpeed = Globals.player.speed;
     }
 
     // Update is called once per frame
@@ -35,6 +38,12 @@ public class CameraController : MonoBehaviour
             if (playerX - transform.position.x > 0)
             {
                 transform.position = new Vector3(playerX, transform.position.y, transform.position.z);
+
+                parallax.Speed = - parallaxSpeed;
+            }
+            else
+            {
+                parallax.Speed = 0;
             }
         }
     }
