@@ -645,7 +645,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnDistanceFromCamera: 5
   newSpawnSize: 5
-  dwarfMelee: {fileID: 0}
+  dwarfMelee: {fileID: 2917799986967892130, guid: 44f44dc829024314c87896dfd3582cf1,
+    type: 3}
 --- !u!4 &2080134020
 Transform:
   m_ObjectHideFlags: 0
@@ -794,7 +795,7 @@ PrefabInstance:
     - target: {fileID: 6056037151166330028, guid: 5578fb40b43999a46b5902d625fc2098,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6056037151166330028, guid: 5578fb40b43999a46b5902d625fc2098,
         type: 3}
