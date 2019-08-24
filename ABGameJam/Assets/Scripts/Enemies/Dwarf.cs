@@ -4,14 +4,16 @@ using UnityEngine;
 
 public abstract class Dwarf : Enemy
 {
-    Rigidbody2D rb2D;
-    Collider2D col;
+    public float moveSpeed = 1;
+
+    protected Rigidbody2D rb2d;
+    protected Collider2D col;
 
     public bool active = true;
 
     void Awake()
     {
-        rb2D = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
     }
 
@@ -33,9 +35,9 @@ public abstract class Dwarf : Enemy
         active = false;
         col.enabled = false;
         // Start gravity
-        rb2D.constraints = 0;
+        rb2d.constraints = 0;
         // Launch dwarf
-        rb2D.AddForce(force);
+        rb2d.AddForce(force);
 
         // Start a timer to destroy object
         Destroy(gameObject, 5);
