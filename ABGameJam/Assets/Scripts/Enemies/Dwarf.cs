@@ -19,7 +19,7 @@ public abstract class Dwarf : Enemy
         
     }
 
-    public override void TakeDamage(int damage)
+    public override void OnHit(int damage)
     {
         // TODO need to send a better force reacting to attack
         Die(new Vector2(0, 200));
@@ -36,10 +36,5 @@ public abstract class Dwarf : Enemy
 
         // Start a timer to destroy object
         Destroy(gameObject, 5);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
     }
 }
