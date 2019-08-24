@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     public int stompDamage = 2;
     public BoxCollider2D punchCollider;
     public int punchDamage = 3;
+    public BoxCollider2D dashCollider;
+    public int dashDamage = 5;
 
     void Awake()
     {
@@ -60,6 +62,14 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.K))
             {
                 Attack(punchCollider, punchDamage);
+            }
+            // Dash
+            else if (Input.GetKeyDown(KeyCode.Space) && currentDash == maxDash)
+            {
+                //Attack(dashCollider, dashDamage);
+                rb2d.MovePosition(rb2d.position + new Vector2(10 * currentSpeed * Time.deltaTime, 0));
+                //currentDash = 0;
+                //dashSlider.value = currentDash;
             }
         }
     }
