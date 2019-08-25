@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.53333336}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.60784316}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2010,23 +2010,35 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1816519058, guid: dfa2bf0a35b231c4c8f6ddaca40b9812, type: 3}
-      propertyPath: Elements.Array.data[1].RepositionLogic.SortingOrder
-      value: 0
+    - target: {fileID: 4895678504983170500, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.56
       objectReference: {fileID: 0}
-    - target: {fileID: 1816519058, guid: dfa2bf0a35b231c4c8f6ddaca40b9812, type: 3}
-      propertyPath: Elements.Array.data[0].RepositionLogic.SortingOrder
-      value: -1
+    - target: {fileID: 8164484408092631961, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.56
       objectReference: {fileID: 0}
     - target: {fileID: 9187388847483849415, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
         type: 3}
-      propertyPath: Elements.Array.data[0].RepositionLogic.SortingOrder
+      propertyPath: Elements.Array.data[0].RepositionLogic.PositionMode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9187388847483849415, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
         type: 3}
-      propertyPath: Elements.Array.data[1].RepositionLogic.SortingOrder
-      value: 6
+      propertyPath: Elements.Array.data[1].RepositionLogic.PositionMode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187388847483849415, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: Elements.Array.data[0].RepositionLogic.ScaleHeight
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187388847483849415, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: Elements.Array.data[1].RepositionLogic.ScaleHeight
+      value: 0.073
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfa2bf0a35b231c4c8f6ddaca40b9812, type: 3}
