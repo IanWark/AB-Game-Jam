@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb2d;
     private Animator animator;
-    private Animation animation;
     public BoxCollider2D stompCollider;
     public int stompDamage = 2;
     public BoxCollider2D punchCollider;
