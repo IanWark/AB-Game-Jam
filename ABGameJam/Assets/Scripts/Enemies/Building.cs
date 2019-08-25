@@ -10,7 +10,7 @@ public class Building : Enemy
 
     public Arrow arrow;
     public float attackSpeed = 3;
-    private float attackTimer = 0;
+    private float attackTimer = 1;
     
     public int maxHealth;
     private int currentHealth;
@@ -102,11 +102,9 @@ public class Building : Enemy
         // Spawn dwarf(s)
         // Adding 0.5f makes them spawn at the top of the building
         Spawn(dwarfRanged, transform.position.x, transform.position.y + 0.5f, 1);
-        
+
         // Increase score
-        GameObject Player = GameObject.Find("Player");
-        PlayerController playerController = Player.GetComponent<PlayerController>();
-        playerController.score += scoreValue;
+        Globals.player.score += scoreValue;
 
         // Start a timer to destroy object
         Destroy(gameObject, 5);

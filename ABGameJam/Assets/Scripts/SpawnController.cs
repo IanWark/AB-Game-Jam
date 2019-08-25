@@ -38,6 +38,10 @@ public class SpawnController : MonoBehaviour
     public float building2_2Chance = 0;
     public int building2_2Num = 1;
 
+    public Helicopter helicopter;
+    public float helicopterChance = 0;
+    public int helicopterNum = 1;
+
     // Update is called once per frame
     void Update()
     {
@@ -45,7 +49,7 @@ public class SpawnController : MonoBehaviour
 
         if (cameraX >= lastXPositionSpawned + newSpawnSize)
         {
-            float newSpawn = Random.Range(0, dwarfCivilianChance + dwarfMeleeChance + building1_1Chance + building1_2Chance + building1_3Chance + building2_1Chance + building2_2Chance);
+            float newSpawn = Random.Range(0, dwarfCivilianChance + dwarfMeleeChance + building1_1Chance + building1_2Chance + building1_3Chance + building2_1Chance + building2_2Chance + helicopterChance);
 
             if (newSpawn <= dwarfCivilianChance)
             {
@@ -74,6 +78,10 @@ public class SpawnController : MonoBehaviour
             else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1_1Chance + building1_2Chance + building1_3Chance + building2_1Chance + building2_2Chance)
             {
                 Spawn(building2_2, cameraX, building2_2.spawnHeight, building2_2Num);
+            }
+            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1_1Chance + building1_2Chance + building1_3Chance + building2_1Chance + building2_2Chance + helicopterChance)
+            {
+                Spawn(helicopter, cameraX, helicopter.spawnHeight, helicopterNum);
             }
 
             lastXPositionSpawned = Globals.mainCamera.transform.position.x;

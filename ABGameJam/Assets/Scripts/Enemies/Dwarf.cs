@@ -56,21 +56,6 @@ public abstract class Dwarf : Enemy
         Die(direction * 100);
     }
 
-    public abstract void DieAnimation();
-
-    protected void DieSound()
-    {
-        // Random chance to wilhelm scream
-        if (Random.Range(0.0f, 1.0f) < chanceToWilhelm)
-        {
-            PlaySoundWithRandomDelay(dyingSound_w);
-        }
-        else
-        {
-            PlaySoundWithRandomDelay(dyingSound);
-        }
-    }
-
     void Die(Vector2 force)
     {
         // Stop AI
@@ -86,11 +71,24 @@ public abstract class Dwarf : Enemy
         DieSound();
 
         // Increase score
-        GameObject Player = GameObject.Find("Player");
-        PlayerController playerController = Player.GetComponent<PlayerController>();
-        playerController.score += scoreValue;
+        Globals.player.score += scoreValue;
 
         // Start a timer to destroy object
         Destroy(gameObject, 5);
+    }
+
+    public abstract void DieAnimation();
+
+    protected void DieSound()
+    {
+        // Random chance to wilhelm scream
+        if (Random.Range(0.0f, 1.0f) < chanceToWilhelm)
+        {
+            PlaySoundWithRandomDelay(dyingSound_w);
+        }
+        else
+        {
+            PlaySoundWithRandomDelay(dyingSound);
+        }
     }
 }
