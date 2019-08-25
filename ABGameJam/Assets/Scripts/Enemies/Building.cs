@@ -21,6 +21,9 @@ public class Building : Enemy
     protected Collider2D col;
 
     public bool active = true;
+    
+    // For spawning dead Ranged Dwarves
+    public DwarfRanged dwarfRanged;
 
     // Start is called before the first frame update
     void Start()
@@ -72,8 +75,10 @@ public class Building : Enemy
         col.enabled = false;
         // Start gravity
         rb2d.constraints = 0;
-        // Launch dwarf
+        // Launch building
         rb2d.AddForce(force);
+        // Spawn dwarf(s)
+        Spawn(dwarfRanged, transform.position.x, transform.position.y, 1);
         
         // Increase score
         GameObject Player = GameObject.Find("Player");
@@ -82,5 +87,13 @@ public class Building : Enemy
 
         // Start a timer to destroy object
         Destroy(gameObject, 5);
+    }
+    
+    void Spawn(Enemy prefab, float spawnX, float spawnY, int numberToSpawn)
+    {
+        for (int i = 0; i < numberToSpawn; ++i)
+        {
+            Instantiate(prefab, new Vector2(spawnX, spawnY), gameObject.transform.rotation);
+        }
     }
 }

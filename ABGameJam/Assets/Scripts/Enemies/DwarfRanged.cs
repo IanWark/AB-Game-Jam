@@ -2,19 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DwarfRanged : MonoBehaviour
+public class DwarfRanged : Dwarf
 {
-    public int attackSpeed;
+    //public int attackSpeed;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Spawn from destroyed buildings that appeared to have ranged dwarves in them
+        dieNow();
     }
 
-    // Update is called once per frame
-    void Update()
+    // A combination of OnHit() and Die()
+    void dieNow()
     {
+        // Send enemies flying away from the destroyed building
+        // Aim
+        Vector2 randomMod = new Vector2(transform.position.x - Random.Range(-10.0f, 10.0f), transform.position.y  - Random.Range(-10.0f, 10.0f));
+        Vector2 direction = new Vector2(transform.position.x, transform.position.y) - randomMod;
+        direction.Normalize();
+        direction.y += 0.5f;
+
+        // Launch
+        rb2d.AddForce(direction * 100);
         
+        // Start a timer to destroy object
+        Destroy(gameObject, 5);
+    }
+    
+    public override void DieAnimation()
+    {
+        animator.Play("dwarf_ranged_die");
     }
 }
