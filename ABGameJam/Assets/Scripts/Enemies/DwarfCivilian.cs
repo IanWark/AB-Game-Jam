@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class DwarfCivilian : Dwarf
 {
+    public Vector3 localScale;
+    public Vector3 facingLeft;
     private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        localScale = transform.localScale;
+        facingLeft = transform.localScale;
         animator = GetComponent<Animator>();
-
         animator.Play("dwarf_civilian_idle");
     }
 
@@ -22,6 +25,13 @@ public class DwarfCivilian : Dwarf
             if (GetDetectedPlayer())
             {
                 // RUN AWAY!
+                
+                if (localScale == facingLeft)
+                {
+                    localScale.x *= -1;
+                    transform.localScale = localScale;
+                }
+                
                 animator.Play("dwarf_civilian_run");
                 rb2d.MovePosition(rb2d.position + new Vector2(moveSpeed * Time.deltaTime, 0));
             }
