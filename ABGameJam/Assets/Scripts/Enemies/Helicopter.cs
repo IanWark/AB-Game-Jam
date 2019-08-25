@@ -48,7 +48,6 @@ public class Helicopter : Enemy
             {
                 // accelerate if not at full speed
                 if (currentSpeed < maxSpeed) { currentSpeed = Mathf.Min(maxSpeed, currentSpeed + (accelerationPerSecond * Time.fixedDeltaTime)); }
-                Debug.Log(currentSpeed);
                 // Move
                 rb2d.MovePosition(rb2d.position + new Vector2(currentSpeed * Time.deltaTime, 0));
             } else
