@@ -100,6 +100,26 @@ public class PlayerController : MonoBehaviour
         scoreUI.text = score.ToString("D9");
     }
 
+    private void FixedUpdate()
+    {
+        if (numMeleeEnemiesTouching > 0)
+        {
+            // If enemies are touching us, take damage every so often
+            meleeDamageTimer += Time.fixedDeltaTime;
+            if (meleeDamageTimer > meleeAttackSpeed)
+            {
+                OnHit(numMeleeEnemiesTouching * meleeAttackDamage);
+                meleeDamageTimer = 0;
+            }
+        }
+        else
+        {
+            meleeDamageTimer = 0;
+        }
+
+        
+    }
+
     public void OnStomp()
     {
         Attack(stompCollider, stompDamage);
@@ -113,24 +133,6 @@ public class PlayerController : MonoBehaviour
     public void ResumeControl()
     {
         controlEnabled = true;
-    }
-
-    private void FixedUpdate()
-    {
-        if (numMeleeEnemiesTouching > 0)
-        {
-            // If enemies are touching us, take damage every so often
-            meleeDamageTimer += Time.fixedDeltaTime;
-            if (meleeDamageTimer > meleeAttackSpeed)
-            {
-                OnHit(numMeleeEnemiesTouching * meleeAttackDamage);   
-                meleeDamageTimer = 0;
-            }
-        }
-        else
-        {
-            meleeDamageTimer = 0;
-        }
     }
 
     public void OnHit(int damage)
@@ -153,7 +155,14 @@ public class PlayerController : MonoBehaviour
             Enemy enemy = target.gameObject.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.OnHit(damage);
+                ImpactPoint impactPoint = collider.gameObject.GetComponentInChildren<ImpactPoint>();
+                if (impactPoint != null)
+                {
+                    enemy.OnHit(damage, new Vector2(impactPoint.transform.position.x, impactPoint.transform.position.y));
+                } else
+                {
+                    enemy.OnHit(damage, enemy.transform.up);
+                }
             }
         }
     }

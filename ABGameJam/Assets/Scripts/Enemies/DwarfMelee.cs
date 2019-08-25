@@ -22,7 +22,7 @@ public class DwarfMelee : Dwarf
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (active)
         {
