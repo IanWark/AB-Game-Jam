@@ -17,18 +17,26 @@ public class SpawnController : MonoBehaviour
     public DwarfMelee dwarfMelee;
     public float dwarfMeleeChance = 1;
     public int dwarfMeleeNum = 1;
-    
-    public DwarfRanged dwarfRanged;
-    public float dwarfRangedChance = 0;
-    public int dwarfRangedNum = 0;
 
-    public Building building1;
-    public float building1Chance = 1;
-    public int building1Num = 1;
+    public Building building1_1;
+    public float building1_1Chance = 1;
+    public int building1_1Num = 1;
 
-    public Building building2;
-    public float building2Chance = 0;
-    public int building2Num = 1;
+    public Building building1_2;
+    public float building1_2Chance = 1;
+    public int building1_2Num = 1;
+
+    public Building building1_3;
+    public float building1_3Chance = 1;
+    public int building1_3Num = 1;
+
+    public Building building2_1;
+    public float building2_1Chance = 0;
+    public int building2_1Num = 1;
+
+    public Building building2_2;
+    public float building2_2Chance = 0;
+    public int building2_2Num = 1;
 
     // Update is called once per frame
     void Update()
@@ -37,7 +45,7 @@ public class SpawnController : MonoBehaviour
 
         if (cameraX >= lastXPositionSpawned + newSpawnSize)
         {
-            float newSpawn = Random.Range(0, dwarfCivilianChance + dwarfMeleeChance + building1Chance + building2Chance);
+            float newSpawn = Random.Range(0, dwarfCivilianChance + dwarfMeleeChance + building1_1Chance + building1_2Chance + building1_3Chance + building2_1Chance + building2_2Chance);
 
             if (newSpawn <= dwarfCivilianChance)
             {
@@ -47,13 +55,25 @@ public class SpawnController : MonoBehaviour
             {
                 Spawn(dwarfMelee, cameraX, dwarfMelee.spawnHeight, dwarfMeleeNum);
             }
-            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1Chance)
+            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1_1Chance)
             {
-                Spawn(building1, cameraX, building1.spawnHeight, building1Num);
+                Spawn(building1_1, cameraX, building1_1.spawnHeight, building1_1Num);
             }
-            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1Chance + building2Chance)
+            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1_1Chance + building1_2Chance)
             {
-                Spawn(building2, cameraX, building2.spawnHeight, building2Num);
+                Spawn(building1_2, cameraX, building1_2.spawnHeight, building1_2Num);
+            }
+            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1_1Chance + building1_2Chance + building1_3Chance)
+            {
+                Spawn(building1_3, cameraX, building1_3.spawnHeight, building1_3Num);
+            }
+            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1_1Chance + building1_2Chance + building1_3Chance + building2_1Chance)
+            {
+                Spawn(building2_1, cameraX, building2_1.spawnHeight, building2_1Num);
+            }
+            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1_1Chance + building1_2Chance + building1_3Chance + building2_1Chance + building2_2Chance)
+            {
+                Spawn(building2_2, cameraX, building2_2.spawnHeight, building2_2Num);
             }
 
             lastXPositionSpawned = Globals.mainCamera.transform.position.x;

@@ -1855,9 +1855,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed704e1ac8f234b41a19964c94e7e432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDistanceMin: 5
+  spawnDistanceMin: 3
   spawnDistanceMax: 8
-  newSpawnSize: 5
+  newSpawnSize: 3
   dwarfCivilian: {fileID: 6595888934365512199, guid: 4ce5d631e0983c64786038c6afbe7eb3,
     type: 3}
   dwarfCivilianChance: 1
@@ -1866,18 +1866,26 @@ MonoBehaviour:
     type: 3}
   dwarfMeleeChance: 1
   dwarfMeleeNum: 1
-  dwarfRanged: {fileID: 2467114234805813859, guid: 6c37483ed6d3821489b33036ee807084,
+  building1_1: {fileID: -745390771244033422, guid: 20f8b93e1de7b8041a8cb9ef51de2233,
     type: 3}
-  dwarfRangedChance: 0
-  dwarfRangedNum: 0
-  building1: {fileID: -745390771244033422, guid: 20f8b93e1de7b8041a8cb9ef51de2233,
+  building1_1Chance: 0.1
+  building1_1Num: 1
+  building1_2: {fileID: 8613510764520167702, guid: 307a83ea90760154b83673722978f8f7,
     type: 3}
-  building1Chance: 1
-  building1Num: 1
-  building2: {fileID: 7185717503929428782, guid: 482799b0b58a62046a586dd2c079f4fc,
+  building1_2Chance: 0.1
+  building1_2Num: 1
+  building1_3: {fileID: 1975103277029418956, guid: c1e163fbfaf715c419d1b6366cd1c2a1,
     type: 3}
-  building2Chance: 0
-  building2Num: 1
+  building1_3Chance: 0.1
+  building1_3Num: 1
+  building2_1: {fileID: 7185717503929428782, guid: 482799b0b58a62046a586dd2c079f4fc,
+    type: 3}
+  building2_1Chance: 0
+  building2_1Num: 1
+  building2_2: {fileID: 6297068136651664657, guid: 5e35927a5a823fd4b824e75c16119a6d,
+    type: 3}
+  building2_2Chance: 0
+  building2_2Num: 1
 --- !u!4 &2080134020
 Transform:
   m_ObjectHideFlags: 0
