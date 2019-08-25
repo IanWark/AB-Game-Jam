@@ -112,7 +112,6 @@ public class PlayerController : MonoBehaviour
 
     public void ResumeControl()
     {
-        Debug.Log("resume control");
         controlEnabled = true;
     }
 
