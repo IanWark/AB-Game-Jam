@@ -81,6 +81,10 @@ public class DwarfMelee : Dwarf
 
     public void AttackHit()
     {
-        audioSource.PlayOneShot(attackSound);
+        // 85% chance to play
+        if(0.85f > Random.Range(0.0f, 1.0f) )
+        {
+            audioSource.PlayOneShot(attackSound);
+        }
     }
 }

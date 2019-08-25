@@ -65,7 +65,8 @@ public abstract class Dwarf : Enemy
         {
             PlaySoundWithRandomDelay(dyingSound_w);
         }
-        else
+        // 30% chance to play
+        else if (0.3f >= Random.Range(0.0f, 1.0f))
         {
             PlaySoundWithRandomDelay(dyingSound);
         }

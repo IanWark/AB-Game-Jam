@@ -29,6 +29,8 @@ public abstract class Enemy : MonoBehaviour
 
                 if (detectPlayerSound != null)
                 {
+                    // 30% chance to play
+                    if (0.3f >= Random.Range(0.0f, 1.0f))
                     PlaySoundWithRandomDelay(detectPlayerSound);
                 }
             }
