@@ -22,5 +22,5 @@ public abstract class Enemy : MonoBehaviour
         return detectedPlayer;       
     }
 
-    public abstract void OnHit(int damage);
+    public abstract void OnHit(int damage, Vector2 impactPoint);
 }

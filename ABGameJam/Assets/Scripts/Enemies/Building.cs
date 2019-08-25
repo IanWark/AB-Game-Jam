@@ -55,7 +55,7 @@ public class Building : Enemy
         }
     }
 
-    public override void OnHit(int damage)
+    public override void OnHit(int damage, Vector2 impactPoint)
     {
         currentHealth -= damage;
         

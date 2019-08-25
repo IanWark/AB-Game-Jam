@@ -15,7 +15,7 @@ public class DwarfCivilian : Dwarf
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (active)
         {

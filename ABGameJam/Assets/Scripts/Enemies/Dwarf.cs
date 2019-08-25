@@ -14,8 +14,6 @@ public abstract class Dwarf : Enemy
     
     private int scoreValue = 100;
 
-    // TODO clean up Dwarves who end up too far ahead or behind the camera (using colliders?)
-
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -28,10 +26,14 @@ public abstract class Dwarf : Enemy
         
     }
 
-    public override void OnHit(int damage)
+    public override void OnHit(int damage, Vector2 impactPosition)
     {
-        // TODO need to send a better force reacting to attack
-        Die(new Vector2(0, 200));
+        // Send enemies flying away from the impact
+        Vector2 direction = new Vector2(transform.position.x, transform.position.y) - impactPosition;
+        direction.Normalize();
+        direction.y += 0.5f;
+
+        Die(direction * 100);
     }
 
     public abstract void DieAnimation();
