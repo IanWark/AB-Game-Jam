@@ -11,6 +11,7 @@ public class DwarfCivilian : Dwarf
     // Start is called before the first frame update
     void Start()
     {
+        detectionRange = Random.Range(3.0f,4.0f);
         localScale = transform.localScale;
         facingLeft = transform.localScale;
         animator = GetComponent<Animator>();
