@@ -20,6 +20,7 @@ public class Building : Enemy
     protected Rigidbody2D rb2d;
     protected Collider2D col;
     protected SpriteRenderer spriteRenderer;
+    protected AudioSource audioSource;
 
     public bool active = true;
 
@@ -27,6 +28,8 @@ public class Building : Enemy
     public int numDwarves;
     public DwarfRanged dwarfRanged;
     public Sprite emptySprite;
+    public AudioClip takeDamageSound;
+    public AudioClip dieSound;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,7 @@ public class Building : Enemy
         rb2d = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -48,6 +52,7 @@ public class Building : Enemy
             
             if (attackTimer > attackSpeed)
             {
+                // Shoot an arrow
                 Vector2 ourPos = new Vector2(transform.position.x + arrowSpawnExtraX, transform.position.y + arrowSpawnExtraY);
                 Vector2 theirPos = new Vector2(Globals.player.transform.position.x, Globals.player.transform.position.y);
 
@@ -65,7 +70,13 @@ public class Building : Enemy
     public override void OnHit(int damage, Vector2 impactPoint)
     {
         currentHealth -= damage;
-        
+
+        // Damage sound
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(takeDamageSound);
+        }
+
         if (currentHealth <= 0)
         {
             Die(new Vector2(0, 10));
@@ -83,6 +94,8 @@ public class Building : Enemy
         rb2d.AddForce(force);
         // Make building look empty
         spriteRenderer.sprite = emptySprite;
+        // Make sound
+        audioSource.PlayOneShot(dieSound);
         // Spawn dwarf(s)
         // Adding 0.5f makes them spawn at the top of the building
         Spawn(dwarfRanged, transform.position.x, transform.position.y + 0.5f, 1);
