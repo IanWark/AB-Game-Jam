@@ -207,13 +207,14 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   maxDash: 1000
   dashSlider: {fileID: 0}
+  dashing: 0
   controlEnabled: 1
   stompCollider: {fileID: 1300845202614599984}
   stompDamage: 1
   punchCollider: {fileID: 4754502692135194377}
   punchDamage: 3
   dashCollider: {fileID: 458671641}
-  dashDamage: 5
+  dashDamage: 1
   tracker: {fileID: 0}
 --- !u!50 &1576539633
 Rigidbody2D:

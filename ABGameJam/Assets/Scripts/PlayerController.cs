@@ -16,6 +16,10 @@ public class PlayerController : MonoBehaviour
     public Slider dashSlider;
     private int currentDash;
     
+    public bool dashing = false;
+    private float dashMaxTime = 1.0f;
+    private float dashTimer = 0;
+    
     public const float speed = 2;
     // Current speed changes whenever the number of melee enemies touching us changes
     private float currentSpeed = speed;
@@ -60,7 +64,7 @@ public class PlayerController : MonoBehaviour
         // Replenish dash
         if (currentDash < maxDash)
         {
-            currentDash += 5;
+            currentDash += 2;
             dashSlider.value = currentDash;
         }
         
@@ -97,8 +101,10 @@ public class PlayerController : MonoBehaviour
             // Dash
             else if (Input.GetKeyDown(KeyCode.Space) && currentDash == maxDash)
             {
-                Attack(dashCollider, dashDamage);
-                Dash();
+                dashing = true;
+                controlEnabled = false;
+                animator.speed = 2.0f;
+                animator.Play("monster_walk");
             }
         }
         
@@ -134,6 +140,29 @@ public class PlayerController : MonoBehaviour
         } else
         {
             controlTimer = 0;
+        }
+        if (dashing)
+        {
+            dashTimer += Time.fixedDeltaTime;
+            
+            // Dash and do damage while we're dashing
+            Dash();
+            Attack(dashCollider, dashDamage);
+            
+            if (dashTimer > dashMaxTime)
+            {
+                // Stop dashing, reset animation system
+                dashing = false;
+                dashTimer = 0;
+                animator.enabled = false;
+                animator.speed = 1.0f;
+                animator.enabled = true;
+                controlEnabled = true;
+            }
+        }
+        else
+        {
+            dashTimer = 0;
         }
     }
 
@@ -187,7 +216,7 @@ public class PlayerController : MonoBehaviour
     
     public void Dash()
     {
-        rb2d.MovePosition(rb2d.position + new Vector2(10 * currentSpeed * Time.deltaTime, 0));
+        rb2d.MovePosition(rb2d.position + new Vector2(3 * currentSpeed * Time.deltaTime, 0));
         currentDash = 0;
         dashSlider.value = currentDash;
     }
