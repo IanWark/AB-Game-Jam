@@ -22,7 +22,16 @@ public class Helicopter : Enemy
     public Arrow missile;
     public float attackSpeed = 3;
     private float attackTimer = 1;
+    public float missileSpawnExtraY = -0.2f;
+    public float missileSpawnExtraX = -0.1f;
+    public float missileTargetExtraYMin = -0.5f;
+    public float missileTargetExtraYMax = 0.5f;
     public AudioClip shootSound;
+    public AudioClip deathSound;
+
+    public float rotorPitchMin = 0.5f;
+    public float rotorPitchMax = 0.8f;
+    private AudioSource rotorSource;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +40,9 @@ public class Helicopter : Enemy
 
         rb2d = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+
+        rotorSource = GetComponentInChildren<AudioSource>();
+        rotorSource.pitch = Random.Range(rotorPitchMin, rotorPitchMax);
 
         targetDistance = Random.Range(targetDistanceMin, targetDistanceMax);
     }
@@ -64,14 +76,20 @@ public class Helicopter : Enemy
             if (attackTimer > attackSpeed)
             {
                 // Shoot an arrow
-                Vector2 arrowDirection = playerPos - ourPos;
+                Vector2 missileSource = ourPos;
+                missileSource.x += missileSpawnExtraX;
+                missileSource.y += missileSpawnExtraY;
+                Vector2 missileTarget = playerPos;
+                missileTarget.y += Random.Range(missileTargetExtraYMin, missileTargetExtraYMax);
+
+                Vector2 arrowDirection = missileTarget - missileSource;
                 arrowDirection.Normalize();
 
-                Arrow newArrow = Instantiate(missile, ourPos, Quaternion.identity);
+                Arrow newArrow = Instantiate(missile, missileSource, Quaternion.identity);
                 newArrow.Direction = arrowDirection;
 
                 // Make a sound
-                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.pitch = Random.Range(0.6f, 0.8f);
                 audioSource.PlayOneShot(shootSound);
 
                 attackTimer = 0;
@@ -105,6 +123,7 @@ public class Helicopter : Enemy
 
     void DieSound()
     {
-        // 
+        rotorSource.Stop();
+        audioSource.PlayOneShot(deathSound);
     }
 }
