@@ -2005,6 +2005,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6840198250629114226, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1816519058, guid: dfa2bf0a35b231c4c8f6ddaca40b9812, type: 3}
       propertyPath: Elements.Array.data[1].RepositionLogic.SortingOrder
       value: 0
@@ -2012,6 +2017,16 @@ PrefabInstance:
     - target: {fileID: 1816519058, guid: dfa2bf0a35b231c4c8f6ddaca40b9812, type: 3}
       propertyPath: Elements.Array.data[0].RepositionLogic.SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187388847483849415, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: Elements.Array.data[0].RepositionLogic.SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187388847483849415, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: Elements.Array.data[1].RepositionLogic.SortingOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfa2bf0a35b231c4c8f6ddaca40b9812, type: 3}
@@ -2022,16 +2037,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7645249889956600434, guid: 5578fb40b43999a46b5902d625fc2098,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: cb648e909c95a0b469143c9f7ac39156, type: 2}
-    - target: {fileID: 7645249889956600434, guid: 5578fb40b43999a46b5902d625fc2098,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 20715790596566727, guid: 5578fb40b43999a46b5902d625fc2098,
         type: 3}
       propertyPath: m_Name
@@ -2077,5 +2082,20 @@ PrefabInstance:
       propertyPath: scoreUI
       value: 
       objectReference: {fileID: 471219306}
+    - target: {fileID: 2996105792198366331, guid: 5578fb40b43999a46b5902d625fc2098,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645249889956600434, guid: 5578fb40b43999a46b5902d625fc2098,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cb648e909c95a0b469143c9f7ac39156, type: 2}
+    - target: {fileID: 7645249889956600434, guid: 5578fb40b43999a46b5902d625fc2098,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5578fb40b43999a46b5902d625fc2098, type: 3}
