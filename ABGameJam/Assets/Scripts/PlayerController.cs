@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         
-        scoreUI.text = score.ToString();
+        scoreUI.text = score.ToString("D9");
     }
 
     private void FixedUpdate()
