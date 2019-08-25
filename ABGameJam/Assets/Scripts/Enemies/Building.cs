@@ -25,7 +25,7 @@ public class Building : Enemy
     // Start is called before the first frame update
     void Start()
     {
-        detectionRange = 10;
+        detectionRange = Random.Range(9.0f,10.0f);
         maxHealth = 6;
         currentHealth = maxHealth;
         
