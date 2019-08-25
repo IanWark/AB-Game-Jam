@@ -726,7 +726,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -802,6 +802,13 @@ MonoBehaviour:
   controlEnabled: 0
   controlSpeed: 5
   parallax: {fileID: 9187388847483849415}
+  shakeDuration: 0.15
+  dashDuration: 0.75
+  duration: 0
+  dash: 0
+  shakeAmount: 0.1
+  decreaseFactor: 1
+  shake: 0
 --- !u!1 &6922417928636214912
 GameObject:
   m_ObjectHideFlags: 0

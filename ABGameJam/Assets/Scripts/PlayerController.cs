@@ -198,6 +198,7 @@ public class PlayerController : MonoBehaviour
     {
         Attack(stompCollider, stompDamage);
         PlayMainSound(stompSound, 0.5f, 0.8f);
+        Globals.mainCamera.Shake(true);
     }
 
     public void OnPunch()

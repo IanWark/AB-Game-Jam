@@ -8,10 +8,21 @@ public class CameraController : MonoBehaviour
     public float controlSpeed = 5;
     public FreeParallax parallax;
 
+    // How long the object should shake for.
+    public float shakeDuration = .15f;
+
+    // Amplitude of the shake. A larger value shakes the camera harder.
+    public float shakeAmount = 0.1f;
+    public float decreaseFactor = 1.0f;
+    public bool shake;
+
+    Vector3 originalPos;
+
     // Start is called before the first frame update
     void Start()
     {
         Globals.mainCamera = this;
+        shake = false;
     }
 
     // Update is called once per frame
@@ -42,10 +53,44 @@ public class CameraController : MonoBehaviour
 
                 parallax.Speed = -Globals.player.getCurrentSpeed();
             }
+            //If a stomp has happened shake the camera
+            
             else
             {
                 parallax.Speed = 0;
             }
+
+            if (shake == true)
+            {
+                if (shakeDuration > 0)
+                {
+                    parallax.transform.position = originalPos + Random.insideUnitSphere * shakeAmount;
+
+                    shakeDuration -= Time.deltaTime * decreaseFactor;
+                }
+                else
+                {
+                    Shake(false);
+                }
+            }
+
         }
+    }
+
+    //d is dash or not dash
+    public void Shake(bool val)
+    {
+        if (val)
+        {
+            shake = val;
+            originalPos = parallax.transform.position;
+        }
+        else
+        {
+            shake = false;
+            shakeDuration = .15f;
+            parallax.transform.position = originalPos;
+        }
+        
     }
 }
