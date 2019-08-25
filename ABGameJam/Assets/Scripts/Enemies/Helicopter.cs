@@ -89,7 +89,7 @@ public class Helicopter : Enemy
                 newArrow.Direction = arrowDirection;
 
                 // Make a sound
-                audioSource.pitch = Random.Range(0.6f, 0.8f);
+                audioSource.pitch = Random.Range(0.7f, 0.9f);
                 audioSource.PlayOneShot(shootSound);
 
                 attackTimer = 0;

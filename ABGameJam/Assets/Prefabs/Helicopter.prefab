@@ -166,7 +166,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   missileSpawnExtraX: -0.1
   missileTargetExtraYMin: -0.5
   missileTargetExtraYMax: 0.8
-  shootSound: {fileID: 8300000, guid: 147204695a9b5bd4c89dba9955016925, type: 3}
+  shootSound: {fileID: 8300000, guid: 7c04f0e147ebfc1458850220eac66383, type: 3}
   deathSound: {fileID: 8300000, guid: c61979fb7412c3d4091d30ddd05e115c, type: 3}
   rotorPitchMin: 0.5
   rotorPitchMax: 0.8
