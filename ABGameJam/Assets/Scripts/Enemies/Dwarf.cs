@@ -56,6 +56,22 @@ public abstract class Dwarf : Enemy
         Die(direction * 100);
     }
 
+    public abstract void DieAnimation();
+
+    protected void DieSound()
+    {
+        // Random chance to wilhelm scream
+        if (Random.Range(0.0f, 1.0f) < chanceToWilhelm)
+        {
+            PlaySoundWithRandomDelay(dyingSound_w);
+        }
+        // 30% chance to play
+        else if (0.3f >= Random.Range(0.0f, 1.0f))
+        {
+            PlaySoundWithRandomDelay(dyingSound);
+        }
+    }
+
     void Die(Vector2 force)
     {
         // Stop AI
