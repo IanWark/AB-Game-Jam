@@ -15,6 +15,12 @@ public class DwarfRanged : Dwarf
         dieNow();
     }
 
+    // Set anything that depends on voice
+    override protected void SetVoice()
+    {
+        // Nothing for this one
+    }
+
     // A combination of OnHit() and Die()
     void dieNow()
     {
@@ -24,6 +30,9 @@ public class DwarfRanged : Dwarf
         Vector2 direction = new Vector2(transform.position.x, transform.position.y) - randomMod;
         direction.Normalize();
         direction.y += 0.5f;
+
+        // Make sound
+        DieSound();
 
         // Launch
         rb2d.AddForce(direction * 150);

@@ -20,7 +20,6 @@ public class Building : Enemy
     protected Rigidbody2D rb2d;
     protected Collider2D col;
     protected SpriteRenderer spriteRenderer;
-    protected AudioSource audioSource;
 
     public bool active = true;
 
@@ -41,7 +40,6 @@ public class Building : Enemy
         rb2d = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()

@@ -8,7 +8,9 @@ public class DwarfCivilian : Dwarf
     public Vector3 facingLeft;
     private Animator animator;
 
-    // Start is called before the first frame update
+    public AudioClip runAwaySound_f;
+    public AudioClip runAwaySound_m;
+    
     void Start()
     {
         detectionRange = Random.Range(3.0f,4.0f);
@@ -16,6 +18,15 @@ public class DwarfCivilian : Dwarf
         facingLeft = transform.localScale;
         animator = GetComponent<Animator>();
         animator.Play("dwarf_civilian_idle");
+    }
+
+    // Set anything that depends on voice
+    protected override void SetVoice()
+    {
+        if (voice == 0)
+        { detectPlayerSound = runAwaySound_f; }
+        else
+        { detectPlayerSound = runAwaySound_m; }
     }
 
     // Update is called once per frame

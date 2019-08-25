@@ -9,22 +9,42 @@ public abstract class Dwarf : Enemy
 
     protected Rigidbody2D rb2d;
     protected Collider2D col;
+   
+    public AudioClip dyingSound_f;
+    public AudioClip dyingSound_m;
+    public AudioClip dyingSound_w;
+    private AudioClip dyingSound;
+
+    public float chanceToWilhelm = 0.05f;
+    public float voicePitchMin = 0.8f;
+    public float voicePitchMax = 1.2f;
+    protected int voice = 0;
 
     public bool active = true;
     
     private int scoreValue = 150;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         rb2d = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+
+        // Randomly generate which voice to use
+        // 0 is female, 1 is male
+        voice = Random.Range(0, 2);
+        if (voice == 0)
+        { dyingSound = dyingSound_f; }
+        else
+        { dyingSound = dyingSound_m; }
+        SetVoice();
+
+        audioSource.pitch = Random.Range(voicePitchMin, voicePitchMax);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Set anything that depends on voice
+    abstract protected void SetVoice();
 
     public override void OnHit(int damage, Vector2 impactPosition)
     {
@@ -38,6 +58,19 @@ public abstract class Dwarf : Enemy
 
     public abstract void DieAnimation();
 
+    protected void DieSound()
+    {
+        // Random chance to wilhelm scream
+        if (Random.Range(0.0f, 1.0f) < chanceToWilhelm)
+        {
+            PlaySoundWithRandomDelay(dyingSound_w);
+        }
+        else
+        {
+            PlaySoundWithRandomDelay(dyingSound);
+        }
+    }
+
     void Die(Vector2 force)
     {
         // Stop AI
@@ -49,7 +82,9 @@ public abstract class Dwarf : Enemy
         rb2d.constraints = 0;
         // Launch dwarf
         rb2d.AddForce(force);
-        
+        // Make sound
+        DieSound();
+
         // Increase score
         GameObject Player = GameObject.Find("Player");
         PlayerController playerController = Player.GetComponent<PlayerController>();

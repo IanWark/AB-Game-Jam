@@ -13,12 +13,24 @@ public class DwarfMelee : Dwarf
 
     private Animator animator;
 
-    // Start is called before the first frame update
+    public AudioClip battlecrySound_f;
+    public AudioClip battlecrySound_m;
+    public AudioClip attackSound;
+
     void Start()
     {
         detectionRange = Random.Range(3.5f,4.0f);
         animator = GetComponent<Animator>();
         animator.Play("dwarf_melee_idle");
+    }
+
+    // Set anything that depends on voice
+    protected override void SetVoice()
+    {
+        if (voice == 0)
+        { detectPlayerSound = battlecrySound_f; }
+        else
+        { detectPlayerSound = battlecrySound_m; }
     }
 
     // Update is called once per frame
@@ -65,5 +77,10 @@ public class DwarfMelee : Dwarf
             attacking = false;
             animator.Play("dwarf_melee_idle");
         }
+    }
+
+    public void AttackHit()
+    {
+        audioSource.PlayOneShot(attackSound);
     }
 }

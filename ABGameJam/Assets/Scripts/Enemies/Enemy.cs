@@ -7,6 +7,16 @@ public abstract class Enemy : MonoBehaviour
     public float detectionRange = 4;
     private bool detectedPlayer = false;
 
+    protected AudioSource audioSource;
+
+    // Can be set in inherited class to play on seeing player
+    protected AudioClip detectPlayerSound;
+
+    protected virtual void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     protected bool GetDetectedPlayer()
     {
         if (!detectedPlayer)
@@ -16,10 +26,29 @@ public abstract class Enemy : MonoBehaviour
             if (Mathf.Abs(playerDistance) <= detectionRange)
             {
                 detectedPlayer = true;
+
+                if (detectPlayerSound != null)
+                {
+                    PlaySoundWithRandomDelay(detectPlayerSound);
+                }
             }
         }
 
         return detectedPlayer;       
+    }
+
+    // So that everyone is not screaming all at once
+    public void PlaySoundWithRandomDelay(AudioClip clip)
+    {
+        audioSource.Stop();
+        float delay = Random.Range(0.0f, 0.2f);
+        StartCoroutine(PlaySoundAfterDelay(clip, delay));
+    }
+
+    public IEnumerator PlaySoundAfterDelay(AudioClip clip, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioSource.PlayOneShot(clip);
     }
 
     public abstract void OnHit(int damage, Vector2 impactPoint);
