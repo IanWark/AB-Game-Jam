@@ -20,13 +20,13 @@ public class DwarfRanged : Dwarf
     {
         // Send enemies flying away from the destroyed building
         // Aim
-        Vector2 randomMod = new Vector2(transform.position.x - Random.Range(-10.0f, 10.0f), transform.position.y  - Random.Range(-10.0f, 10.0f));
+        Vector2 randomMod = new Vector2(transform.position.x + Random.Range(-10.0f, 10.0f), transform.position.y + Random.Range(-10.0f, 0.0f));
         Vector2 direction = new Vector2(transform.position.x, transform.position.y) - randomMod;
         direction.Normalize();
         direction.y += 0.5f;
 
         // Launch
-        rb2d.AddForce(direction * 100);
+        rb2d.AddForce(direction * 150);
         
         // Start a timer to destroy object
         Destroy(gameObject, 5);

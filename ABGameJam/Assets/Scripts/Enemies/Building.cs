@@ -78,7 +78,8 @@ public class Building : Enemy
         // Launch building
         rb2d.AddForce(force);
         // Spawn dwarf(s)
-        Spawn(dwarfRanged, transform.position.x, transform.position.y, 1);
+        // Adding 0.5f makes them spawn at the top of the building
+        Spawn(dwarfRanged, transform.position.x, transform.position.y + 0.5f, 1);
         
         // Increase score
         GameObject Player = GameObject.Find("Player");
