@@ -11,6 +11,8 @@ public abstract class Dwarf : Enemy
     protected Collider2D col;
 
     public bool active = true;
+    
+    private int scoreValue = 100;
 
     // TODO clean up Dwarves who end up too far ahead or behind the camera (using colliders?)
 
@@ -41,6 +43,11 @@ public abstract class Dwarf : Enemy
         rb2d.constraints = 0;
         // Launch dwarf
         rb2d.AddForce(force);
+        
+        // Increase score
+        GameObject Player = GameObject.Find("Player");
+        PlayerController playerController = Player.GetComponent<PlayerController>();
+        playerController.score += scoreValue;
 
         // Start a timer to destroy object
         Destroy(gameObject, 5);
