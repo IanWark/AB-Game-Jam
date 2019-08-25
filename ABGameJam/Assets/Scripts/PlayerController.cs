@@ -45,6 +45,15 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D dashCollider;
     public int dashDamage;
 
+    public AudioSource audioMain;
+    public AudioSource audioWalk1;
+    public AudioSource audioWalk2;
+    public AudioClip stompSound;
+    public AudioClip dashSound;
+    public AudioClip walkSound;
+    private int walkTurn = 1;
+    private const float mainVolume = 1;
+
     public ScoreTracker tracker;
 
     void Awake()
@@ -109,6 +118,7 @@ public class PlayerController : MonoBehaviour
                 controlEnabled = false;
                 animator.speed = 2.0f;
                 animator.Play("monster_walk");
+                PlayMainSound(dashSound, 1, 1);
             }
         }
         
@@ -151,11 +161,17 @@ public class PlayerController : MonoBehaviour
         if (dashing)
         {
             dashTimer += Time.fixedDeltaTime;
-            
+
             // Dash and do damage while we're dashing
             Dash();
             Attack(dashCollider, dashDamage);
-            
+
+            // fade out sound if halfway through
+            if (dashTimer / dashMaxTime > 0.5f)
+            {
+                audioMain.volume = Mathf.Lerp(mainVolume, 0, dashTimer / dashMaxTime);
+            }
+
             if (dashTimer > dashMaxTime)
             {
                 // Stop dashing, reset animation system
@@ -166,6 +182,9 @@ public class PlayerController : MonoBehaviour
                 animator.speed = 1.0f;
                 animator.enabled = true;
                 controlEnabled = true;
+
+                audioMain.Stop();
+                audioMain.volume = mainVolume;
             }
         }
         else
@@ -177,6 +196,7 @@ public class PlayerController : MonoBehaviour
     public void OnStomp()
     {
         Attack(stompCollider, stompDamage);
+        PlayMainSound(stompSound, 0.5f, 0.8f);
     }
 
     public void OnPunch()
@@ -254,5 +274,31 @@ public class PlayerController : MonoBehaviour
     public Collider2D[] GetAllCollidersHit(BoxCollider2D ourCollider)
     {
         return Physics2D.OverlapBoxAll(ourCollider.transform.position, ourCollider.size, 0);
+    }
+
+    public void PlayMainSound(AudioClip sound, float pitchMin, float pitchMax)
+    {
+        audioMain.volume = mainVolume;
+        audioMain.pitch = Random.Range(pitchMin, pitchMax);
+        audioMain.PlayOneShot(sound);
+    }
+
+    public void WalkSound()
+    {
+        float pitch = Random.Range(0.5f, 1.0f);
+
+        if (walkTurn == 1)
+        {
+            audioWalk1.pitch = pitch;
+            audioWalk1.Play();
+
+            walkTurn = 2;
+        } else
+        {
+            audioWalk2.pitch = pitch;
+            audioWalk2.Play();
+
+            walkTurn = 1;
+        }
     }
 }
