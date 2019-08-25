@@ -12,17 +12,31 @@ public class Building : Enemy
     public float attackSpeed = 3;
     private float attackTimer = 0;
     
+    public int maxHealth;
+    private int currentHealth;
+    
     private int scoreValue = 1500;
+    
+    protected Rigidbody2D rb2d;
+    protected Collider2D col;
+
+    public bool active = true;
 
     // Start is called before the first frame update
     void Start()
     {
         detectionRange = 10;
+        maxHealth = 6;
+        currentHealth = maxHealth;
+        
+        // TODO: Implement rigid body for Building
+        //rb2d = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
     }
 
     void FixedUpdate()
     {
-        if (GetDetectedPlayer())
+        if (GetDetectedPlayer() && active)
         {
             attackTimer += Time.fixedDeltaTime;
             
@@ -44,13 +58,31 @@ public class Building : Enemy
 
     public override void OnHit(int damage)
     {
-        // TODO 
+        currentHealth -= damage;
         
-        // Increase score (TODO: when dead or per hit?)
+        if (currentHealth <= 0)
+        {
+            Die(new Vector2(0, 200));
+        }
+    }
+    
+    void Die(Vector2 force)
+    {
+        // Stop AI
+        active = false;
+        col.enabled = false;
+        // Start gravity
+        //rb2d.constraints = 0;
+        // Launch dwarf
+        //rb2d.AddForce(force);
+        
+        // Increase score
         GameObject Player = GameObject.Find("Player");
         PlayerController playerController = Player.GetComponent<PlayerController>();
         playerController.score += scoreValue;
-        
-        Destroy(gameObject);
+
+        // TODO: Increase when death is animated
+        // Start a timer to destroy object
+        Destroy(gameObject, 0);
     }
 }
