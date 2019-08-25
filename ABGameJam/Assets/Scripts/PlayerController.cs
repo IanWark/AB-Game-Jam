@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
             dashSlider.value = currentDash;
         }
         
-        // If a button is being pressed
+        // If player is not attacking/is able to move
         if (controlEnabled)
         {
             // Move left/right
@@ -132,6 +132,8 @@ public class PlayerController : MonoBehaviour
             meleeDamageTimer = 0;
         }
 
+        // We take control away from player when attacking
+        // There's a rare bug where it doesn't come back, so also we have a timer to reset after 2 seconds
         if (!controlEnabled)
         {
             controlTimer += Time.fixedDeltaTime;
@@ -145,6 +147,7 @@ public class PlayerController : MonoBehaviour
         {
             controlTimer = 0;
         }
+
         if (dashing)
         {
             dashTimer += Time.fixedDeltaTime;
@@ -157,6 +160,7 @@ public class PlayerController : MonoBehaviour
             {
                 // Stop dashing, reset animation system
                 dashing = false;
+                UpdateSpeed();
                 dashTimer = 0;
                 animator.enabled = false;
                 animator.speed = 1.0f;
@@ -220,7 +224,12 @@ public class PlayerController : MonoBehaviour
     
     public void Dash()
     {
-        rb2d.MovePosition(rb2d.position + new Vector2(3 * currentSpeed * Time.deltaTime, 0));
+        // The camera and background move based on current speed
+        // We want them to move faster because we are moving caster, so set current speed * 3
+        UpdateSpeed();
+        currentSpeed *= 3;
+
+        rb2d.MovePosition(rb2d.position + new Vector2(currentSpeed * Time.deltaTime, 0));
         currentDash = 0;
         dashSlider.value = currentDash;
     }
