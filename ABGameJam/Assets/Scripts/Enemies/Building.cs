@@ -73,7 +73,7 @@ public class Building : Enemy
     public override void OnHit(int damage, Vector2 impactPoint)
     {
         currentHealth -= damage;
-        //Globals.mainCamera.Shake(true);
+        Globals.mainCamera.Shake(true);
         // Damage sound
         if (!audioSource.isPlaying)
         {
@@ -82,7 +82,7 @@ public class Building : Enemy
 
         if (currentHealth <= 0)
         {
-            Globals.mainCamera.Shake(true);
+            //Globals.mainCamera.Shake(true);
             Die(new Vector2(0, 10));
         }
     }
