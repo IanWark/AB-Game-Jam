@@ -29,6 +29,7 @@ public class Building : Enemy
     public Sprite emptySprite;
     public AudioClip takeDamageSound;
     public AudioClip dieSound;
+    public AudioClip shootSound;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,10 @@ public class Building : Enemy
 
                 Arrow newArrow = Instantiate(arrow, ourPos, Quaternion.identity);
                 newArrow.Direction = arrowDirection;
+
+                // Make a sound
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.PlayOneShot(shootSound);
 
                 attackTimer = 0;
             } 

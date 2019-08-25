@@ -136,6 +136,7 @@ MonoBehaviour:
   emptySprite: {fileID: 21300000, guid: 5dea07004c945f14f8e767a542f468a8, type: 3}
   takeDamageSound: {fileID: 8300000, guid: c8b34053abe19f14dad0a57d97c1a7e1, type: 3}
   dieSound: {fileID: 8300000, guid: af698c97afef3404bb7b67bbd6f16fb4, type: 3}
+  shootSound: {fileID: 8300000, guid: 147204695a9b5bd4c89dba9955016925, type: 3}
 --- !u!50 &7274378570064697071
 Rigidbody2D:
   serializedVersion: 4
