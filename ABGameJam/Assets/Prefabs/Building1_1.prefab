@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -745390771244033422}
   - component: {fileID: 3234952233564476832}
   m_Layer: 9
-  m_Name: Building_1
+  m_Name: Building1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   arrowSpawnExtraY: 0.4
   arrowSpawnExtraX: -0.1
   arrow: {fileID: 6875106327061668347, guid: 5c2f98ac74aa47b41b8a05b2db0fa607, type: 3}
-  attackSpeed: 3
+  attackSpeed: 2
   maxHealth: 0
   active: 1
 --- !u!50 &3234952233564476832

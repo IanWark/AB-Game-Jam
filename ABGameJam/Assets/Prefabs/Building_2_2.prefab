@@ -125,6 +125,6 @@ MonoBehaviour:
   arrowSpawnExtraY: 0.4
   arrowSpawnExtraX: -0.1
   arrow: {fileID: 6875106327061668347, guid: 5c2f98ac74aa47b41b8a05b2db0fa607, type: 3}
-  attackSpeed: 1.5
+  attackSpeed: 1
   maxHealth: 0
   active: 1
