@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     private int meleeAttackDamage = DwarfMelee.attackDamage;
 
     public bool controlEnabled = true;
+    private float controlMaxTime = 2;
+    private float controlTimer = 0;
 
     private Rigidbody2D rb2d;
     private Animator animator;
@@ -117,7 +119,19 @@ public class PlayerController : MonoBehaviour
             meleeDamageTimer = 0;
         }
 
-        
+        if (!controlEnabled)
+        {
+            controlTimer += Time.fixedDeltaTime;
+
+            if (controlTimer > controlMaxTime)
+            {
+                controlEnabled = true;
+                controlTimer = 0;
+            }
+        } else
+        {
+            controlTimer = 0;
+        }
     }
 
     public void OnStomp()
