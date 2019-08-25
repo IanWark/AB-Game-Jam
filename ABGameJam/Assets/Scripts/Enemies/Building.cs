@@ -19,11 +19,14 @@ public class Building : Enemy
     
     protected Rigidbody2D rb2d;
     protected Collider2D col;
+    protected SpriteRenderer spriteRenderer;
 
     public bool active = true;
-    
+
     // For spawning dead Ranged Dwarves
+    public int numDwarves;
     public DwarfRanged dwarfRanged;
+    public Sprite emptySprite;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +37,7 @@ public class Building : Enemy
         
         rb2d = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -77,6 +81,8 @@ public class Building : Enemy
         rb2d.constraints = 0;
         // Launch building
         rb2d.AddForce(force);
+        // Make building look empty
+        spriteRenderer.sprite = emptySprite;
         // Spawn dwarf(s)
         // Adding 0.5f makes them spawn at the top of the building
         Spawn(dwarfRanged, transform.position.x, transform.position.y + 0.5f, 1);

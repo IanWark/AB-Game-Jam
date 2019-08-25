@@ -129,8 +129,10 @@ MonoBehaviour:
   attackSpeed: 1
   maxHealth: 0
   active: 1
+  numDwarves: 2
   dwarfRanged: {fileID: 2467114234805813859, guid: 6c37483ed6d3821489b33036ee807084,
     type: 3}
+  emptySprite: {fileID: 21300000, guid: 5dea07004c945f14f8e767a542f468a8, type: 3}
 --- !u!50 &7274378570064697071
 Rigidbody2D:
   serializedVersion: 4
