@@ -5,7 +5,8 @@ using UnityEngine;
 public class Building : Enemy
 {
     public float spawnHeight = -0.65f;
-    public float extraHeightForArrow = 0.5f;
+    public float arrowSpawnExtraY = 0.4f;
+    public float arrowSpawnExtraX = -0.1f;
 
     public Arrow arrow;
     public float attackSpeed = 3;
@@ -27,7 +28,7 @@ public class Building : Enemy
             
             if (attackTimer > attackSpeed)
             {
-                Vector2 ourPos = new Vector2(transform.position.x, transform.position.y + extraHeightForArrow);
+                Vector2 ourPos = new Vector2(transform.position.x + arrowSpawnExtraX, transform.position.y + arrowSpawnExtraY);
                 Vector2 theirPos = new Vector2(Globals.player.transform.position.x, Globals.player.transform.position.y);
 
                 Vector2 arrowDirection = theirPos - ourPos;
