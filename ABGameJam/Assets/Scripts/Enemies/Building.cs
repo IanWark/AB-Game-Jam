@@ -29,8 +29,7 @@ public class Building : Enemy
         maxHealth = 6;
         currentHealth = maxHealth;
         
-        // TODO: Implement rigid body for Building
-        //rb2d = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
     }
 
@@ -62,7 +61,7 @@ public class Building : Enemy
         
         if (currentHealth <= 0)
         {
-            Die(new Vector2(0, 200));
+            Die(new Vector2(0, 10));
         }
     }
     
@@ -72,17 +71,16 @@ public class Building : Enemy
         active = false;
         col.enabled = false;
         // Start gravity
-        //rb2d.constraints = 0;
+        rb2d.constraints = 0;
         // Launch dwarf
-        //rb2d.AddForce(force);
+        rb2d.AddForce(force);
         
         // Increase score
         GameObject Player = GameObject.Find("Player");
         PlayerController playerController = Player.GetComponent<PlayerController>();
         playerController.score += scoreValue;
 
-        // TODO: Increase when death is animated
         // Start a timer to destroy object
-        Destroy(gameObject, 0);
+        Destroy(gameObject, 5);
     }
 }

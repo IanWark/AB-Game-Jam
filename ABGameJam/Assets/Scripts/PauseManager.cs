@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
@@ -51,7 +52,6 @@ public class PauseManager : MonoBehaviour
     //resume game
     public void Resume()
     {
-        print("hello");
         if( Time.timeScale == 0)
             {
                 Time.timeScale = 1;
@@ -62,8 +62,7 @@ public class PauseManager : MonoBehaviour
     //exit the game completely
     public void ExitGame()
     {
-            Application.Quit();
+        print("quit");
+        Application.Quit();
     }
-
-
 }

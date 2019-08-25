@@ -41,11 +41,14 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D dashCollider;
     public int dashDamage = 5;
 
+    public ScoreTracker tracker;
+
     void Awake()
     {
         Globals.player = this;
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
+        tracker = FindObjectOfType<ScoreTracker>();
         currentHealth = maxHealth;
         currentDash = maxDash;
         score = 0;
@@ -157,6 +160,7 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             // Die, show score on game over screen
+            tracker.GameOver(score);
         }
     }
 
