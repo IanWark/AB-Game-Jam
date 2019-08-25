@@ -26,7 +26,7 @@ public class Building : Enemy
     void Start()
     {
         detectionRange = Random.Range(9.0f,10.0f);
-        maxHealth = 6;
+        maxHealth = 60;
         currentHealth = maxHealth;
         
         rb2d = GetComponent<Rigidbody2D>();

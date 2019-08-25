@@ -210,11 +210,11 @@ MonoBehaviour:
   dashing: 0
   controlEnabled: 1
   stompCollider: {fileID: 1300845202614599984}
-  stompDamage: 1
+  stompDamage: 20
   punchCollider: {fileID: 4754502692135194377}
-  punchDamage: 3
+  punchDamage: 30
   dashCollider: {fileID: 458671641}
-  dashDamage: 1
+  dashDamage: 3
   tracker: {fileID: 0}
 --- !u!50 &1576539633
 Rigidbody2D:

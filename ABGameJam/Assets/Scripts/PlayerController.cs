@@ -39,11 +39,11 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb2d;
     private Animator animator;
     public BoxCollider2D stompCollider;
-    public int stompDamage = 2;
+    public int stompDamage;
     public BoxCollider2D punchCollider;
-    public int punchDamage = 3;
+    public int punchDamage;
     public BoxCollider2D dashCollider;
-    public int dashDamage = 10;
+    public int dashDamage;
 
     public ScoreTracker tracker;
 
@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
         currentHealth = maxHealth;
         currentDash = maxDash;
         score = 0;
+        
+        stompDamage = 20;
+        punchDamage = 30;
+        dashDamage = 3;
     }
 
     // Update is called once per frame
