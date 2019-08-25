@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource audioWalk1;
     public AudioSource audioWalk2;
     public AudioClip stompSound;
+    public AudioClip punchSound;
     public AudioClip dashSound;
     public AudioClip walkSound;
     private int walkTurn = 1;
@@ -202,6 +203,7 @@ public class PlayerController : MonoBehaviour
     public void OnPunch()
     {
         Attack(punchCollider, punchDamage);
+        PlayMainSound(punchSound, 0.8f, 1.0f);
     }
 
     public void ResumeControl()

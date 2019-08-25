@@ -222,6 +222,7 @@ MonoBehaviour:
   audioWalk1: {fileID: 8498190317703322619}
   audioWalk2: {fileID: 8211126086250588202}
   stompSound: {fileID: 8300000, guid: 8a40e66d974a5e24eb2c602812a47028, type: 3}
+  punchSound: {fileID: 8300000, guid: b455bfa27b1bca442ae2b1e5b70fbb5a, type: 3}
   dashSound: {fileID: 8300000, guid: 95b2419de96a9d749bb4492276be1ff3, type: 3}
   walkSound: {fileID: 8300000, guid: 8a40e66d974a5e24eb2c602812a47028, type: 3}
   tracker: {fileID: 0}
