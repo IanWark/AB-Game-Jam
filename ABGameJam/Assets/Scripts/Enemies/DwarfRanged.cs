@@ -10,6 +10,7 @@ public class DwarfRanged : Dwarf
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         // Spawn from destroyed buildings that appeared to have ranged dwarves in them
         dieNow();
     }
