@@ -21,13 +21,16 @@ public class CameraController : MonoBehaviour
         if (controlEnabled)
         {
             // Independant camera movement (for testing only)
-            bool right = Input.GetKey(KeyCode.P);
-            bool left = Input.GetKey(KeyCode.I);
+            bool up = Input.GetKey(KeyCode.P);
+            bool down = Input.GetKey(KeyCode.Colon);
+            bool right = Input.GetKey(KeyCode.Quote);
+            bool left = Input.GetKey(KeyCode.L);
 
-            int direction = (right ? 1 : 0) - (left ? 1 : 0);
+            int directionX = (right ? 1 : 0) - (left ? 1 : 0);
+            int directionY = (up ? 1 : 0) - (down ? 1 : 0);
 
             // Simple x-axis only movement
-            transform.Translate(new Vector3(direction * controlSpeed * Time.deltaTime, 0, 0));
+            transform.Translate(new Vector3(directionX * controlSpeed * Time.deltaTime, directionY * controlSpeed * Time.deltaTime, 0));
         } else
         {
             // If player is infront of camera, follow
