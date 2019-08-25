@@ -92,19 +92,4 @@ public abstract class Dwarf : Enemy
         // Start a timer to destroy object
         Destroy(gameObject, 5);
     }
-
-    public abstract void DieAnimation();
-
-    protected void DieSound()
-    {
-        // Random chance to wilhelm scream
-        if (Random.Range(0.0f, 1.0f) < chanceToWilhelm)
-        {
-            PlaySoundWithRandomDelay(dyingSound_w);
-        }
-        else
-        {
-            PlaySoundWithRandomDelay(dyingSound);
-        }
-    }
 }
