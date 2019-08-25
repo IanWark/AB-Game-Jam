@@ -1979,41 +1979,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed704e1ac8f234b41a19964c94e7e432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDistanceMin: 3
-  spawnDistanceMax: 8
-  newSpawnSize: 3
   dwarfCivilian: {fileID: 6595888934365512199, guid: 4ce5d631e0983c64786038c6afbe7eb3,
     type: 3}
-  dwarfCivilianChance: 1
-  dwarfCivilianNum: 2
   dwarfMelee: {fileID: 2917799986967892130, guid: 44f44dc829024314c87896dfd3582cf1,
     type: 3}
-  dwarfMeleeChance: 1
-  dwarfMeleeNum: 1
   building1_1: {fileID: -745390771244033422, guid: 20f8b93e1de7b8041a8cb9ef51de2233,
     type: 3}
-  building1_1Chance: 0.1
-  building1_1Num: 1
   building1_2: {fileID: 8613510764520167702, guid: 307a83ea90760154b83673722978f8f7,
     type: 3}
-  building1_2Chance: 0.1
-  building1_2Num: 1
   building1_3: {fileID: 1975103277029418956, guid: c1e163fbfaf715c419d1b6366cd1c2a1,
     type: 3}
-  building1_3Chance: 0.1
-  building1_3Num: 1
   building2_1: {fileID: 7185717503929428782, guid: 482799b0b58a62046a586dd2c079f4fc,
     type: 3}
-  building2_1Chance: 0
-  building2_1Num: 1
   building2_2: {fileID: 6297068136651664657, guid: 5e35927a5a823fd4b824e75c16119a6d,
     type: 3}
-  building2_2Chance: 0
-  building2_2Num: 1
   helicopter: {fileID: 348143058352399406, guid: fe78ef42117f1fc43bd14d92a20b9564,
     type: 3}
-  helicopterChance: 1
-  helicopterNum: 1
 --- !u!4 &2080134020
 Transform:
   m_ObjectHideFlags: 0
@@ -2150,46 +2131,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4895678504983170500, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 4895678504983170500, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4895678504983170500, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -9.4800005
-      objectReference: {fileID: 0}
-    - target: {fileID: 4895678504983170500, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8164484408092631961, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 8164484408092631961, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8164484408092631961, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8164484408092631961, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.1
-      objectReference: {fileID: 0}
     - target: {fileID: 9187388847483849415, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
         type: 3}
       propertyPath: Elements.Array.data[0].RepositionLogic.PositionMode
@@ -2209,6 +2150,46 @@ PrefabInstance:
         type: 3}
       propertyPath: Elements.Array.data[1].RepositionLogic.ScaleHeight
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164484408092631961, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164484408092631961, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164484408092631961, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164484408092631961, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895678504983170500, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895678504983170500, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895678504983170500, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.4800005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4895678504983170500, guid: dfa2bf0a35b231c4c8f6ddaca40b9812,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfa2bf0a35b231c4c8f6ddaca40b9812, type: 3}
@@ -2294,5 +2275,10 @@ PrefabInstance:
       propertyPath: dashSlider
       value: 
       objectReference: {fileID: 1332936381}
+    - target: {fileID: 5904718012436838769, guid: 5578fb40b43999a46b5902d625fc2098,
+        type: 3}
+      propertyPath: pauseFilter
+      value: 
+      objectReference: {fileID: 968993712}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5578fb40b43999a46b5902d625fc2098, type: 3}

@@ -52,10 +52,16 @@ public class PlayerController : MonoBehaviour
     public AudioClip punchSound;
     public AudioClip dashSound;
     public AudioClip walkSound;
+    public AudioClip deathSound;
     private int walkTurn = 1;
     private const float mainVolume = 1;
 
+    private bool dying = false;
+    private float timeToDie = 7;
+    private float deathTimer = 0;
+
     public ScoreTracker tracker;
+    public Image pauseFilter;
 
     void Awake()
     {
@@ -128,69 +134,89 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (numMeleeEnemiesTouching > 0)
+        if (dying)
         {
-            // If enemies are touching us, take damage every so often
-            meleeDamageTimer += Time.fixedDeltaTime;
-            if (meleeDamageTimer > meleeAttackSpeed)
+            // count down to death
+            deathTimer += Time.fixedDeltaTime;
+
+            // Make screen darker
+            Color newColor = pauseFilter.color;
+            newColor.a = deathTimer / timeToDie;
+            pauseFilter.color = newColor;
+
+            if (deathTimer > timeToDie)
             {
-                OnHit(numMeleeEnemiesTouching * meleeAttackDamage);
+                // Die, show score on game over screen
+                tracker.GameOver(score);
+            }
+        }
+        else
+        {
+            if (numMeleeEnemiesTouching > 0)
+            {
+                // If enemies are touching us, take damage every so often
+                meleeDamageTimer += Time.fixedDeltaTime;
+                if (meleeDamageTimer > meleeAttackSpeed)
+                {
+                    OnHit(numMeleeEnemiesTouching * meleeAttackDamage);
+                    meleeDamageTimer = 0;
+                }
+            }
+            else
+            {
                 meleeDamageTimer = 0;
             }
-        }
-        else
-        {
-            meleeDamageTimer = 0;
-        }
 
-        // We take control away from player when attacking
-        // There's a rare bug where it doesn't come back, so also we have a timer to reset after 2 seconds
-        if (!controlEnabled)
-        {
-            controlTimer += Time.fixedDeltaTime;
-
-            if (controlTimer > controlMaxTime)
+            // We take control away from player when attacking
+            // There's a rare bug where it doesn't come back, so also we have a timer to reset after 2 seconds
+            if (!controlEnabled)
             {
-                controlEnabled = true;
+                controlTimer += Time.fixedDeltaTime;
+
+                if (controlTimer > controlMaxTime)
+                {
+                    controlEnabled = true;
+                    controlTimer = 0;
+                }
+            }
+            else
+            {
                 controlTimer = 0;
             }
-        } else
-        {
-            controlTimer = 0;
-        }
 
-        if (dashing)
-        {
-            dashTimer += Time.fixedDeltaTime;
-
-            // Dash and do damage while we're dashing
-            Dash();
-            Attack(dashCollider, dashDamage);
-
-            // fade out sound if halfway through
-            if (dashTimer / dashMaxTime > 0.5f)
+            if (dashing)
             {
-                audioMain.volume = Mathf.Lerp(mainVolume, 0, dashTimer / dashMaxTime);
+                dashTimer += Time.fixedDeltaTime;
+
+                // Dash and do damage while we're dashing
+                Dash();
+                Attack(dashCollider, dashDamage);
+
+                // fade out sound if halfway through
+                if (dashTimer / dashMaxTime > 0.5f)
+                {
+                    audioMain.volume = Mathf.Lerp(mainVolume, 0, dashTimer / dashMaxTime);
+                }
+
+                if (dashTimer > dashMaxTime)
+                {
+                    // Stop dashing, reset animation system
+                    dashing = false;
+                    UpdateSpeed();
+                    dashTimer = 0;
+                    animator.enabled = false;
+                    animator.speed = 1.0f;
+                    animator.enabled = true;
+                    controlEnabled = true;
+
+                    audioMain.Stop();
+                    audioMain.volume = mainVolume;
+                }
             }
-
-            if (dashTimer > dashMaxTime)
+            else
             {
-                // Stop dashing, reset animation system
-                dashing = false;
-                UpdateSpeed();
                 dashTimer = 0;
-                animator.enabled = false;
-                animator.speed = 1.0f;
-                animator.enabled = true;
-                controlEnabled = true;
-
-                audioMain.Stop();
-                audioMain.volume = mainVolume;
             }
-        }
-        else
-        {
-            dashTimer = 0;
         }
     }
 
@@ -217,10 +243,22 @@ public class PlayerController : MonoBehaviour
         currentHealth -= damage;
         healthSlider.value = currentHealth;
         
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !dying)
         {
-            // Die, show score on game over screen
-            tracker.GameOver(score);
+            // Start dying
+            dying = true;
+            // Remove control
+            controlMaxTime = 999;
+            controlEnabled = false;
+            // Start gravity
+            rb2d.constraints = 0;
+            // Play sound
+            PlayMainSound(deathSound, 1, 1);
+            // Make it darker
+            Color newColor = pauseFilter.color;
+            newColor.a = 0;
+            pauseFilter.color = newColor;
+            pauseFilter.gameObject.SetActive(true);
         }
     }
 

@@ -62,7 +62,6 @@ public class PauseManager : MonoBehaviour
     //exit the game completely
     public void ExitGame()
     {
-        print("quit");
         Application.Quit();
     }
 }
