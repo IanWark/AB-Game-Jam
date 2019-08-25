@@ -12,7 +12,7 @@ public abstract class Dwarf : Enemy
 
     public bool active = true;
     
-    private int scoreValue = 100;
+    private int scoreValue = 150;
 
     void Awake()
     {
