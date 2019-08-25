@@ -2022,6 +2022,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7645249889956600434, guid: 5578fb40b43999a46b5902d625fc2098,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cb648e909c95a0b469143c9f7ac39156, type: 2}
+    - target: {fileID: 7645249889956600434, guid: 5578fb40b43999a46b5902d625fc2098,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 20715790596566727, guid: 5578fb40b43999a46b5902d625fc2098,
         type: 3}
       propertyPath: m_Name
@@ -2054,11 +2064,6 @@ PrefabInstance:
       objectReference: {fileID: 890668857}
     - target: {fileID: 5904718012436838769, guid: 5578fb40b43999a46b5902d625fc2098,
         type: 3}
-      propertyPath: dashCollider
-      value: 
-      objectReference: {fileID: 8931873430857721055}
-    - target: {fileID: 5904718012436838769, guid: 5578fb40b43999a46b5902d625fc2098,
-        type: 3}
       propertyPath: dashSlider
       value: 
       objectReference: {fileID: 1332936381}
@@ -2074,9 +2079,3 @@ PrefabInstance:
       objectReference: {fileID: 471219306}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5578fb40b43999a46b5902d625fc2098, type: 3}
---- !u!61 &8931873430857721055 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 1576539634, guid: 5578fb40b43999a46b5902d625fc2098,
-    type: 3}
-  m_PrefabInstance: {fileID: 8931873430857721054}
-  m_PrefabAsset: {fileID: 0}

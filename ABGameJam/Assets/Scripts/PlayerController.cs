@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public Slider dashSlider;
     private int currentDash;
     
-    public const float speed = 3;
+    public const float speed = 2;
     // Current speed changes whenever the number of melee enemies touching us changes
     private float currentSpeed = speed;
     public float getCurrentSpeed() { return currentSpeed; }
@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public bool controlEnabled = true;
 
     private Rigidbody2D rb2d;
+    private Animator animator;
+    private Animation animation;
     public BoxCollider2D stompCollider;
     public int stompDamage = 2;
     public BoxCollider2D punchCollider;
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         Globals.player = this;
         rb2d = gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
         currentHealth = maxHealth;
         currentDash = maxDash;
         score = 0;
@@ -62,17 +65,30 @@ public class PlayerController : MonoBehaviour
         {
             // Move left/right
             // Collider will stop from moving offscreen to the left
-            rb2d.MovePosition(rb2d.position + new Vector2(Input.GetAxisRaw("Horizontal") * currentSpeed * Time.deltaTime, 0));
+            float movementInput = Input.GetAxisRaw("Horizontal");
+            if (movementInput > 0) {
+                animator.Play("monster_walk");
+            }
+            else if (movementInput < 0) {
+                animator.Play("monster_walk_backwards");
+            } else
+            {
+                animator.Play("monster_idle");
+            }
+            
+            rb2d.MovePosition(rb2d.position + new Vector2(movementInput * currentSpeed * Time.deltaTime, 0));
 
             // Stomp
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.J))
             {
-                Attack(stompCollider, stompDamage);
+                animator.Play("monster_stomp");
+                controlEnabled = false;
             }
             // Punch
             else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.K))
             {
-                Attack(punchCollider, punchDamage);
+                animator.Play("monster_punch");
+                controlEnabled = false;
             }
             // Dash
             else if (Input.GetKeyDown(KeyCode.Space) && currentDash == maxDash)
@@ -83,6 +99,22 @@ public class PlayerController : MonoBehaviour
         }
         
         scoreUI.text = score.ToString();
+    }
+
+    public void OnStomp()
+    {
+        Attack(stompCollider, stompDamage);
+    }
+
+    public void OnPunch()
+    {
+        Attack(punchCollider, punchDamage);
+    }
+
+    public void ResumeControl()
+    {
+        Debug.Log("resume control");
+        controlEnabled = true;
     }
 
     private void FixedUpdate()
