@@ -16,8 +16,8 @@ public class DwarfMelee : Dwarf
     // Start is called before the first frame update
     void Start()
     {
+        detectionRange = Random.Range(3.5f,4.0f);
         animator = GetComponent<Animator>();
-
         animator.Play("dwarf_melee_idle");
     }
 
