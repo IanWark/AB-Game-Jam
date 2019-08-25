@@ -22,10 +22,14 @@ public class SpawnController : MonoBehaviour
     public float dwarfRangedChance = 0;
     public int dwarfRangedNum = 0;
 
-    public Building building;
-    public float buildingChance = 1;
-    public int buildingNum = 1;
-    
+    public Building building1;
+    public float building1Chance = 1;
+    public int building1Num = 1;
+
+    public Building building2;
+    public float building2Chance = 0;
+    public int building2Num = 1;
+
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +37,7 @@ public class SpawnController : MonoBehaviour
 
         if (cameraX >= lastXPositionSpawned + newSpawnSize)
         {
-            float newSpawn = Random.Range(0, dwarfCivilianChance + dwarfMeleeChance + buildingChance);
+            float newSpawn = Random.Range(0, dwarfCivilianChance + dwarfMeleeChance + building1Chance + building2Chance);
 
             if (newSpawn <= dwarfCivilianChance)
             {
@@ -43,11 +47,15 @@ public class SpawnController : MonoBehaviour
             {
                 Spawn(dwarfMelee, cameraX, dwarfMelee.spawnHeight, dwarfMeleeNum);
             }
-            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + buildingChance)
+            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1Chance)
             {
-                Spawn(building, cameraX, building.spawnHeight, buildingNum);
+                Spawn(building1, cameraX, building1.spawnHeight, building1Num);
             }
-            
+            else if (newSpawn <= dwarfCivilianChance + dwarfMeleeChance + building1Chance + building2Chance)
+            {
+                Spawn(building2, cameraX, building2.spawnHeight, building2Num);
+            }
+
             lastXPositionSpawned = Globals.mainCamera.transform.position.x;
         }        
     }
