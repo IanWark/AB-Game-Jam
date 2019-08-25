@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public Text scoreUI;
+    public int score;
+    
     public int maxHealth = 1000;
     public Slider healthSlider;
     private int currentHealth;
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         currentDash = maxDash;
+        score = 0;
     }
 
     // Update is called once per frame
@@ -77,6 +81,8 @@ public class PlayerController : MonoBehaviour
                 Dash();
             }
         }
+        
+        scoreUI.text = score.ToString();
     }
 
     private void FixedUpdate()
