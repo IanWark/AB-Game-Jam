@@ -129,6 +129,8 @@ MonoBehaviour:
   attackSpeed: 2
   maxHealth: 0
   active: 1
+  dwarfRanged: {fileID: 2467114234805813859, guid: 6c37483ed6d3821489b33036ee807084,
+    type: 3}
 --- !u!50 &3468847851714557187
 Rigidbody2D:
   serializedVersion: 4

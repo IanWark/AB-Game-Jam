@@ -2210,20 +2210,5 @@ PrefabInstance:
       propertyPath: dashSlider
       value: 
       objectReference: {fileID: 1332936381}
-    - target: {fileID: 5904718012436838769, guid: 5578fb40b43999a46b5902d625fc2098,
-        type: 3}
-      propertyPath: dashDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904718012436838769, guid: 5578fb40b43999a46b5902d625fc2098,
-        type: 3}
-      propertyPath: stompDamage
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5904718012436838769, guid: 5578fb40b43999a46b5902d625fc2098,
-        type: 3}
-      propertyPath: punchDamage
-      value: 30
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5578fb40b43999a46b5902d625fc2098, type: 3}
