@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D punchCollider;
     public int punchDamage = 3;
     public BoxCollider2D dashCollider;
-    public int dashDamage = 5;
+    public int dashDamage = 10;
 
     public ScoreTracker tracker;
 
