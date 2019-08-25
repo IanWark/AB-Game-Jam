@@ -11,6 +11,7 @@ public class MusicPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player1.volume = 0.7f;
         player1.PlayOneShot(gameplayMusic);
     }
 
