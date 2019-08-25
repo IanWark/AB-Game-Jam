@@ -10,6 +10,8 @@ public class Building : Enemy
     public Arrow arrow;
     public float attackSpeed = 3;
     private float attackTimer = 0;
+    
+    private int scoreValue = 1500;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,12 @@ public class Building : Enemy
     public override void OnHit(int damage)
     {
         // TODO 
+        
+        // Increase score (TODO: when dead or per hit?)
+        GameObject Player = GameObject.Find("Player");
+        PlayerController playerController = Player.GetComponent<PlayerController>();
+        playerController.score += scoreValue;
+        
         Destroy(gameObject);
     }
 }
