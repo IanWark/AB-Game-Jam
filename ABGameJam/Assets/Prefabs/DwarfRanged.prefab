@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5631670099599425418}
   - component: {fileID: 7515114485265986468}
   - component: {fileID: 5750873974575833269}
+  - component: {fileID: 2919946242561655306}
   - component: {fileID: 2467114234805813859}
   m_Layer: 9
   m_Name: DwarfRanged
@@ -131,6 +132,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 0.4}
   m_EdgeRadius: 0
+--- !u!95 &2919946242561655306
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4436336813751432196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2467114234805813859
 MonoBehaviour:
   m_ObjectHideFlags: 0
