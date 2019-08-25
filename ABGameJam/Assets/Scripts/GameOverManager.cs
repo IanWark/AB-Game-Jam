@@ -19,14 +19,11 @@ public class GameOverManager : MonoBehaviour
     //exit the game completely
     public void ExitGame()
     {
-        print("quit");
         Application.Quit();
     }
 
     public void RestartGame()
     {
-        //score = 0;
-        print("restart");
         SceneManager.LoadScene("GameScene");
     }
 }
