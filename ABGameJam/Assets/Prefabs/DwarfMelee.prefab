@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1638637460250493579}
   - component: {fileID: -5838007434677695748}
   - component: {fileID: 2917799986967892130}
+  - component: {fileID: 1295673523011619380}
   m_Layer: 9
   m_Name: DwarfMelee
   m_TagString: Untagged
@@ -122,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.8}
+    oldSize: {x: 0.6666667, y: 0.53333336}
     newSize: {x: 1, y: 0.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -144,7 +145,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRange: 4
-  spawnHeight: -0.85
+  spawnHeight: -0.97
   moveSpeed: 1
   active: 1
   closeEnoughDistance: 0.5
+--- !u!95 &1295673523011619380
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207752307898462116}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fd6d462ebb372a34e8cdd98973943a5e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

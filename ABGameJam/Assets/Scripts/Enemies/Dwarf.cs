@@ -34,11 +34,15 @@ public abstract class Dwarf : Enemy
         Die(new Vector2(0, 200));
     }
 
+    public abstract void DieAnimation();
+
     void Die(Vector2 force)
     {
         // Stop AI
         active = false;
         col.enabled = false;
+        // Play death animation
+        DieAnimation();
         // Start gravity
         rb2d.constraints = 0;
         // Launch dwarf

@@ -9,10 +9,16 @@ public class DwarfMelee : Dwarf
     static public int attackDamage = 5;
     static public float attackSpeed = 1;
 
+    private bool attacking = false;
+
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+
+        animator.Play("dwarf_melee_idle");
     }
 
     // Update is called once per frame
@@ -26,10 +32,17 @@ public class DwarfMelee : Dwarf
             {
                 float xSpeed = (playerDistance > 0 ? 1 : -1) * moveSpeed;
                 rb2d.MovePosition(rb2d.position + new Vector2(xSpeed * Time.deltaTime, 0));
+
+                if (!attacking) { animator.Play("dwarf_melee_run"); }
             }
         }
     }
-    
+
+    public override void DieAnimation()
+    {
+        animator.Play("dwarf_melee_die");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController player = collision.gameObject.GetComponent<PlayerController>(); 
@@ -37,6 +50,8 @@ public class DwarfMelee : Dwarf
         {
             // Attach to player to slow them and damage them periodically (handled in PlayerController)
             player.AddMeleeEnemy();
+            attacking = true;
+            animator.Play("dwarf_melee_attack");
         }
     }
 
@@ -47,6 +62,8 @@ public class DwarfMelee : Dwarf
         {
             // Detach from player
             player.RemoveMeleeEnemy();
+            attacking = false;
+            animator.Play("dwarf_melee_idle");
         }
     }
 }
