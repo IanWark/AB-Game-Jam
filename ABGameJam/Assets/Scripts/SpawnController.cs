@@ -5,47 +5,49 @@ using UnityEngine;
 public class SpawnController : MonoBehaviour
 {
     // Can spawn a new thing every newSpawnSize units
-    public float spawnDistanceMin = 5;
-    public float spawnDistanceMax = 10;
-    public float newSpawnSize = 5;
+    private float spawnDistanceMin = 3;
+    private float spawnDistanceMax = 8;
+    private float newSpawnSize = 5;
     private float lastXPositionSpawned = 0;
 
     public DwarfCivilian dwarfCivilian;
-    public float dwarfCivilianChance = 1;
-    public int dwarfCivilianNum = 2;
+    private float dwarfCivilianChance = 1;
+    private int dwarfCivilianNum = 2;
 
     public DwarfMelee dwarfMelee;
-    public float dwarfMeleeChance = 1;
-    public int dwarfMeleeNum = 1;
+    private float dwarfMeleeChance = 0;
+    private int dwarfMeleeNum = 1;
 
     public Building building1_1;
-    public float building1_1Chance = 1;
-    public int building1_1Num = 1;
+    private float building1_1Chance = 0;
+    private int building1_1Num = 1;
 
     public Building building1_2;
-    public float building1_2Chance = 1;
-    public int building1_2Num = 1;
+    private float building1_2Chance = 0;
+    private int building1_2Num = 1;
 
     public Building building1_3;
-    public float building1_3Chance = 1;
-    public int building1_3Num = 1;
+    private float building1_3Chance = 0;
+    private int building1_3Num = 1;
 
     public Building building2_1;
-    public float building2_1Chance = 0;
-    public int building2_1Num = 1;
+    private float building2_1Chance = 0;
+    private int building2_1Num = 1;
 
     public Building building2_2;
-    public float building2_2Chance = 0;
-    public int building2_2Num = 1;
+    private float building2_2Chance = 0;
+    private int building2_2Num = 1;
 
     public Helicopter helicopter;
-    public float helicopterChance = 0;
-    public int helicopterNum = 1;
+    private float helicopterChance = 0;
+    private int helicopterNum = 1;
 
     // Update is called once per frame
     void Update()
     {
         float cameraX = Globals.mainCamera.transform.position.x;
+
+        IncreaseSpawnRates(cameraX);
 
         if (cameraX >= lastXPositionSpawned + newSpawnSize)
         {
@@ -86,6 +88,66 @@ public class SpawnController : MonoBehaviour
 
             lastXPositionSpawned = Globals.mainCamera.transform.position.x;
         }        
+    }
+
+    void IncreaseSpawnRates(float cameraX)
+    {
+        // Spawn melee
+        if (cameraX > 5)
+        {
+            dwarfMeleeChance = 1;
+        }
+        // Spawn buildings
+        if (cameraX > 15) {
+            newSpawnSize = 4;
+
+            building1_1Chance = 0.1f;
+            building1_2Chance = 0.1f;
+            building1_3Chance = 0.1f;
+        }
+        // Spawn more melee continuously
+        if (cameraX > 50)
+        {
+            dwarfMeleeNum = Mathf.FloorToInt(cameraX / 60);
+            dwarfCivilianNum = Mathf.FloorToInt(cameraX / 60);
+        }
+        // Spawn helicopters
+        if (cameraX > 75)
+        {
+            helicopterChance = 0.01f;
+        }
+        // Spawn double buildings
+        if (cameraX > 100)
+        {
+            newSpawnSize = 3;
+            building2_1Chance = 0.3f;
+            building2_2Chance = 0.3f;
+
+            building1_1Chance = 0.1f;
+            building1_2Chance = 0.1f;
+            building1_3Chance = 0.1f;
+        }
+        // Reduce civilian spawn chance
+        if (cameraX > 130)
+        {
+            dwarfCivilianChance = 60f/cameraX;
+
+            helicopterChance = 1;
+            dwarfMeleeChance = 1;
+            building2_1Chance = 0.5f;
+            building2_2Chance = 0.5f;
+        }
+        // even smaller spawn size, may cause chaos
+        // Spawn only double buildings
+        if (cameraX > 200)
+        {
+            newSpawnSize = 2;
+
+            building1_1Chance = 0;
+            building1_2Chance = 0;
+            building1_3Chance = 0;
+        }
+
     }
 
     void Spawn(Enemy prefab, float spawnX, float spawnY, int numberToSpawn)
