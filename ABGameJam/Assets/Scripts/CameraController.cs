@@ -42,7 +42,8 @@ public class CameraController : MonoBehaviour
 
             // Simple x-axis only movement
             transform.Translate(new Vector3(directionX * controlSpeed * Time.deltaTime, directionY * controlSpeed * Time.deltaTime, 0));
-        } else
+        }
+        else
         {
             // If player is infront of camera, follow
             // Otherwise, don't move
@@ -53,13 +54,12 @@ public class CameraController : MonoBehaviour
 
                 parallax.Speed = -Globals.player.getCurrentSpeed();
             }
-            //If a stomp has happened shake the camera
-            
             else
             {
                 parallax.Speed = 0;
             }
 
+            // Camera shake
             if (shake == true)
             {
                 if (shakeDuration > 0)
@@ -72,6 +72,10 @@ public class CameraController : MonoBehaviour
                 {
                     Shake(false);
                 }
+            }
+            else
+            {
+                parallax.transform.position = new Vector3(parallax.transform.position.x, 0, parallax.transform.position.z);
             }
 
         }
@@ -91,6 +95,6 @@ public class CameraController : MonoBehaviour
             shakeDuration = .15f;
             parallax.transform.position = originalPos;
         }
-        
+
     }
 }
